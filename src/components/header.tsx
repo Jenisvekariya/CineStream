@@ -13,6 +13,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu"
 import { getGenres } from '@/lib/data';
 
@@ -39,9 +40,6 @@ export function Header() {
   };
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/homepage-v2', label: 'Home V2' },
-    // The "Movies" link is now a dropdown
     { href: '/tv-shows', label: 'TV Shows' },
     { href: '/subscription', label: 'Subscription' },
     { href: '#', label: 'My Library' },
@@ -52,16 +50,25 @@ export function Header() {
     
     return (
       <>
-        <Button key="/" variant="ghost" asChild className={commonLinkClass}>
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-            Home
-          </Link>
-        </Button>
-        <Button key="/homepage-v2" variant="ghost" asChild className={commonLinkClass}>
-          <Link href="/homepage-v2" onClick={() => setIsMobileMenuOpen(false)}>
-            Home V2
-          </Link>
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              Home <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
+              <Link href="/">Home V1</Link>
+            </DropdownMenuItem>
+             <DropdownMenuItem asChild>
+              <Link href="/homepage-v2">Home V2</Link>
+            </DropdownMenuItem>
+             <DropdownMenuItem asChild>
+              <Link href="/homepage-v3">Home V3</Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
@@ -80,7 +87,7 @@ export function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {navLinks.slice(3).map((link) => (
+        {navLinks.map((link) => (
           <Button key={`${link.href}-${link.label}`} variant="ghost" asChild className={commonLinkClass}>
             <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
               {link.label}
