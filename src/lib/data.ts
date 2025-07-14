@@ -23,7 +23,7 @@ const movies: Movie[] = [
   {
     id: 'echoes-of-the-past',
     title: 'Echoes of the Past',
-    poster: 'https://images.unsplash.com/photo-1675295275003-552a83138c0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxRHJhbWElMjBNeXN0ZXJ5JTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NjMwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1675295275003-552a83138c0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8RHJhbWElMjBNeXN0ZXJ5JTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NjMwfDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Drama', 'Mystery'],
     language: 'English',
@@ -94,7 +94,7 @@ const movies: Movie[] = [
   {
     id: 'path-of-the-samurai',
     title: 'Path of the Samurai',
-    poster: 'https://placehold.co/500x755/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1733648222907-0bb67d214c13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhY3Rpb24lMjBkcmFtYXxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2021,
     genres: ['Action', 'Drama'],
     language: 'Japanese',
@@ -112,7 +112,7 @@ const movies: Movie[] = [
   {
     id: 'love-in-paris',
     title: 'Love in Paris',
-    poster: 'https://placehold.co/500x756/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1603681248580-c4a5e8b83105?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb21hbmNlJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Romance', 'Comedy'],
     language: 'French',
@@ -130,7 +130,7 @@ const movies: Movie[] = [
   {
     id: 'the-heist-of-the-century',
     title: 'The Heist of the Century',
-    poster: 'https://placehold.co/500x757/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1613485930018-9718f90b524d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjcmltZSUyMHRocmlsbGVyfGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Crime', 'Thriller'],
     language: 'English',
@@ -148,7 +148,7 @@ const movies: Movie[] = [
   {
     id: 'galaxy-guardians',
     title: 'Galaxy Guardians',
-    poster: 'https://placehold.co/500x758/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1745483584899-2f65cfb1bae4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2ktZmklMjBhY3Rpb24lMjBjb21lZHl8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Sci-Fi', 'Action', 'Comedy'],
     language: 'English',
@@ -166,7 +166,7 @@ const movies: Movie[] = [
   {
     id: 'whimsical-woods',
     title: 'Whimsical Woods',
-    poster: 'https://placehold.co/500x759/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1622170416334-177b749d7591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhbmltYXRpb24lMjBmYW1pbHklMjBmYW50YXN5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Animation', 'Family', 'Fantasy'],
     language: 'English',
@@ -184,7 +184,7 @@ const movies: Movie[] = [
   {
     id: 'zero-day',
     title: 'Zero Day',
-    poster: 'https://placehold.co/500x760/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1747330022587-e4e5a0f0f5c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aHJpbGxlciUyMGFjdGlvbnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Thriller', 'Action'],
     language: 'English',
@@ -202,7 +202,7 @@ const movies: Movie[] = [
   {
     id: 'a-simple-melody',
     title: 'A Simple Melody',
-    poster: 'https://placehold.co/500x761/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1654752527399-7541131b3e5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkcmFtYSUyMG11c2ljfGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Drama', 'Music'],
     language: 'English',
@@ -217,31 +217,177 @@ const movies: Movie[] = [
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   },
-];
-
-// Add 10 more movies
-for (let i = 1; i <= 10; i++) {
-  const genres = [['Action', 'Thriller'], ['Comedy', 'Romance'], ['Sci-Fi', 'Mystery'], ['Drama'], ['Adventure', 'Family']];
-  const randomGenre = genres[i % genres.length];
-  movies.push({
-    id: `movie-${i}`,
-    title: `Generic Movie ${i}`,
-    poster: `https://placehold.co/500x${761 + i}/1a1a1a/ffffff.png`,
-    year: 2020 + (i % 5),
-    genres: randomGenre,
+  {
+    id: 'movie-1',
+    title: 'Generic Movie 1',
+    poster: 'https://images.unsplash.com/photo-1578301977947-cb446e84e8cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2021,
+    genres: ['Comedy', 'Romance'],
     language: 'English',
-    duration: `1h ${40 + i*2}m`,
-    description: `This is a generic description for movie ${i}. It's a fantastic film that you won't want to miss.`,
-    rating: 6.5 + (i % 20) / 10,
+    duration: '1h 42m',
+    description: 'This is a generic description for movie 1. It\'s a fantastic film that you won\'t want to miss.',
+    rating: 6.6,
     qualities: [
-      { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
-      { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' },
+        { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+        { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
     ],
-    isFree: i % 4 === 0,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-  });
-}
-
+    isFree: false,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-2',
+      title: 'Generic Movie 2',
+      poster: 'https://images.unsplash.com/photo-1735666498436-d478930872ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzY2ktZmklMjBteXN0ZXJ5fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+      year: 2022,
+      genres: ['Sci-Fi', 'Mystery'],
+      language: 'English',
+      duration: '1h 44m',
+      description: 'This is a generic description for movie 2. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 6.7,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-3',
+      title: 'Generic Movie 3',
+      poster: 'https://images.unsplash.com/photo-1550026593-cb89847b168d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkcmFtYXxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      year: 2023,
+      genres: ['Drama'],
+      language: 'English',
+      duration: '1h 46m',
+      description: 'This is a generic description for movie 3. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 6.8,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'movie-4',
+    title: 'Generic Movie 4',
+    poster: 'https://placehold.co/500x765/1a1a1a/ffffff.png',
+    year: 2024,
+    genres: ['Adventure', 'Family'],
+    language: 'English',
+    duration: '1h 48m',
+    description: 'This is a generic description for movie 4. It\'s a fantastic film that you won\'t want to miss.',
+    rating: 6.9,
+    qualities: [
+        { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+        { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+    ],
+    isFree: true,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-5',
+      title: 'Generic Movie 5',
+      poster: 'https://placehold.co/500x766/1a1a1a/ffffff.png',
+      year: 2020,
+      genres: ['Action', 'Thriller'],
+      language: 'English',
+      duration: '1h 50m',
+      description: 'This is a generic description for movie 5. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-6',
+      title: 'Generic Movie 6',
+      poster: 'https://placehold.co/500x767/1a1a1a/ffffff.png',
+      year: 2021,
+      genres: ['Comedy', 'Romance'],
+      language: 'English',
+      duration: '1h 52m',
+      description: 'This is a generic description for movie 6. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7.1,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-7',
+      title: 'Generic Movie 7',
+      poster: 'https://placehold.co/500x768/1a1a1a/ffffff.png',
+      year: 2022,
+      genres: ['Sci-Fi', 'Mystery'],
+      language: 'English',
+      duration: '1h 54m',
+      description: 'This is a generic description for movie 7. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7.2,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-8',
+      title: 'Generic Movie 8',
+      poster: 'https://placehold.co/500x769/1a1a1a/ffffff.png',
+      year: 2023,
+      genres: ['Drama'],
+      language: 'English',
+      duration: '1h 56m',
+      description: 'This is a generic description for movie 8. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7.3,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: true,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-9',
+      title: 'Generic Movie 9',
+      poster: 'https://placehold.co/500x770/1a1a1a/ffffff.png',
+      year: 2024,
+      genres: ['Adventure', 'Family'],
+      language: 'English',
+      duration: '1h 58m',
+      description: 'This is a generic description for movie 9. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7.4,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-10',
+      title: 'Generic Movie 10',
+      poster: 'https://placehold.co/500x771/1a1a1a/ffffff.png',
+      year: 2020,
+      genres: ['Action', 'Thriller'],
+      language: 'English',
+      duration: '2h 0m',
+      description: 'This is a generic description for movie 10. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 7.5,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  }
+];
 
 export async function getMovies() {
   // In a real app, you would fetch this data from an API
