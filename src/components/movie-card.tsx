@@ -28,11 +28,37 @@ export function MovieCard({ movie, rank }: MovieCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
-          {rank && (
+          {rank ? (
             <div className="absolute top-2 left-2 w-8 h-8 md:w-10 md:h-10 bg-primary/90 text-primary-foreground flex items-center justify-center font-bold text-lg md:text-xl rounded-full shadow-lg z-10">
               {rank}
             </div>
+          ) : (
+            <div className="absolute top-2 left-2 flex flex-col gap-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button size="icon" className="h-9 w-9 rounded-full bg-primary/90 hover:bg-primary">
+                                <PlayCircle className="h-5 w-5" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side="right">
+                            <p>Watch Now</p>
+                        </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button size="icon" variant="secondary" className="h-9 w-9 rounded-full">
+                                <ArrowDownToLine className="h-5 w-5" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side="right">
+                            <p>Download</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+            </div>
           )}
+
 
           <div className="absolute top-2 right-2 flex flex-col gap-1 z-10">
             {movie.qualities.slice(0, 2).map((q) => (
@@ -41,41 +67,9 @@ export function MovieCard({ movie, rank }: MovieCardProps) {
             {movie.isFree && <Badge className="text-xs bg-primary">Free</Badge>}
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out bg-gradient-to-t from-black/90 to-transparent">
-            <div className="flex justify-between items-end">
-                <div className="flex-1 mr-2">
-                    <h3 className="font-headline text-lg font-bold text-white truncate">{movie.title}</h3>
-                    <p className="text-sm text-muted-foreground">{movie.year} &bull; {movie.genres[0]}</p>
-                </div>
-                <div className="flex gap-2">
-                    <TooltipProvider>
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <Button size="icon" className="h-9 w-9 rounded-full bg-primary/90 hover:bg-primary">
-                                    <PlayCircle className="h-5 w-5" />
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p>Watch Now</p>
-                            </TooltipContent>
-                        </Tooltip>
-                        <Tooltip>
-                             <TooltipTrigger asChild>
-                                <Button size="icon" variant="secondary" className="h-9 w-9 rounded-full">
-                                    <ArrowDownToLine className="h-5 w-5" />
-                                </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p>Download</p>
-                            </TooltipContent>
-                        </Tooltip>
-                    </TooltipProvider>
-                </div>
-            </div>
-          </div>
-          
-          <div className="absolute bottom-0 left-0 right-0 p-4 group-hover:opacity-0 transition-opacity duration-300">
+          <div className="absolute bottom-0 left-0 right-0 p-4">
                <h3 className="font-headline text-lg font-bold text-white truncate">{movie.title}</h3>
+               <p className="text-sm text-muted-foreground">{movie.year} &bull; {movie.genres[0]}</p>
           </div>
       </Link>
       <div className="text-center">
