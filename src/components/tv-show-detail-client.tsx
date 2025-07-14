@@ -53,6 +53,7 @@ export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) 
   const [seasonsData, setSeasonsData] = React.useState<Episode[][] | null>(null);
   
   React.useEffect(() => {
+    // Generate data only on the client-side to avoid hydration mismatch
     const allSeasonsData = Array.from({ length: show.seasons }, (_, i) => generateEpisodeData(i + 1));
     setSeasonsData(allSeasonsData);
   }, [show.seasons]);
@@ -104,7 +105,7 @@ export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) 
                         ))}
                     </TabsList>
                      {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => {
-                        const episodes = seasonsData ? seasonsData[i] : null;
+                        const episodes = seasonsData ? seasonsData[seasonNum - 1] : null;
                         return (
                         <TabsContent key={seasonNum} value={`season-${seasonNum}`}>
                            <div className="space-y-4 mt-4">
