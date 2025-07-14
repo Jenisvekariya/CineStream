@@ -31,7 +31,7 @@ export default async function TVShowDetailPage({ params }: TVShowDetailPageProps
     notFound();
   }
 
-  const relatedShows = allShows.filter(s => s.genres.includes(show.genres[0]) && s.id !== show.id).slice(0, 10);
+  const relatedShows = allShows.filter(s => s.genres.some(genre => show.genres.includes(genre)) && s.id !== show.id).slice(0, 12);
   const posterHint = show.genres.join(' ').toLowerCase();
 
   return (
