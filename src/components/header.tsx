@@ -1,17 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Film, Search, Menu, X } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { getGenres } from '@/lib/data';
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [genres, setGenres] = useState<string[]>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    async function fetchGenres() {
+      const genresData = await getGenres();
+      setGenres(genresData);
+    }
+    fetchGenres();
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,22 +39,50 @@ export function Header() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/search', label: 'Movies' },
+    // The "Movies" link is now a dropdown
     { href: '#', label: 'TV Shows' },
     { href: '#', label: 'My Library' },
   ];
-
-  const NavItems = () => (
-    <>
-      {navLinks.map((link) => (
-        <Button key={link.href} variant="ghost" asChild>
-          <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-            {link.label}
+  
+  const NavItems = ({ isMobile = false }: { isMobile?: boolean }) => {
+    const commonLinkClass = isMobile ? "w-full justify-start" : "";
+    
+    return (
+      <>
+        <Button key="/" variant="ghost" asChild className={commonLinkClass}>
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+            Home
           </Link>
         </Button>
-      ))}
-    </>
-  );
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              Movies <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild>
+              <Link href="/search">All Movies</Link>
+            </DropdownMenuItem>
+            {genres.map((genre) => (
+              <DropdownMenuItem key={genre} asChild>
+                <Link href={`/search?genre=${encodeURIComponent(genre)}`}>{genre}</Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {navLinks.slice(1).map((link) => (
+          <Button key={link.href} variant="ghost" asChild className={commonLinkClass}>
+            <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
+              {link.label}
+            </Link>
+          </Button>
+        ))}
+      </>
+    );
+  }
+
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -75,10 +119,10 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="p-0">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between p-4 border-b">
-                   <Link href="/" className="flex items-center gap-2">
+                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                     <Film className="h-7 w-7 text-primary" />
                     <span className="font-headline text-2xl font-bold text-white">CineStream</span>
                   </Link>
@@ -87,8 +131,8 @@ export function Header() {
                     <span className="sr-only">Close menu</span>
                   </Button>
                 </div>
-                <nav className="flex flex-col gap-4 p-4">
-                  <NavItems />
+                <nav className="flex flex-col gap-1 p-4">
+                  <NavItems isMobile />
                 </nav>
               </div>
             </SheetContent>

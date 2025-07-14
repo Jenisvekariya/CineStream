@@ -16,7 +16,7 @@ function SearchPageContent() {
   const [loading, setLoading] = useState(true);
 
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
-  const [selectedGenre, setSelectedGenre] = useState('all');
+  const [selectedGenre, setSelectedGenre] = useState(searchParams.get('genre') || 'all');
   const [selectedQuality, setSelectedQuality] = useState('all');
   const [selectedPrice, setSelectedPrice] = useState('all');
 
@@ -32,6 +32,7 @@ function SearchPageContent() {
 
   useEffect(() => {
     setSearchTerm(searchParams.get('q') || '');
+    setSelectedGenre(searchParams.get('genre') || 'all');
   }, [searchParams]);
 
   const filteredMovies = useMemo(() => {
