@@ -13,7 +13,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu"
 import { getGenres } from '@/lib/data';
 
@@ -39,14 +38,9 @@ export function Header() {
     }
   };
 
-  const navLinks = [
-    { href: '/tv-shows', label: 'TV Shows' },
-    { href: '/subscription', label: 'Subscription' },
-    { href: '#', label: 'My Library' },
-  ];
-  
   const NavItems = ({ isMobile = false }: { isMobile?: boolean }) => {
     const commonLinkClass = isMobile ? "w-full justify-start" : "";
+    const closeMenu = () => isMobile && setIsMobileMenuOpen(false);
     
     return (
       <>
@@ -57,15 +51,10 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem asChild>
-              <Link href="/">Home V1</Link>
-            </DropdownMenuItem>
-             <DropdownMenuItem asChild>
-              <Link href="/homepage-v2">Home V2</Link>
-            </DropdownMenuItem>
-             <DropdownMenuItem asChild>
-              <Link href="/homepage-v3">Home V3</Link>
-            </DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/" onClick={closeMenu}>Home V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/homepage-v2" onClick={closeMenu}>Home V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/homepage-v3" onClick={closeMenu}>Home V3</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/homepage-v4" onClick={closeMenu}>Home V4</Link></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -76,24 +65,53 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem asChild>
-              <Link href="/search">All Movies</Link>
-            </DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/search" onClick={closeMenu}>All Movies</Link></DropdownMenuItem>
             {genres.map((genre) => (
               <DropdownMenuItem key={genre} asChild>
-                <Link href={`/search?genre=${encodeURIComponent(genre)}`}>{genre}</Link>
+                <Link href={`/search?genre=${encodeURIComponent(genre)}`} onClick={closeMenu}>{genre}</Link>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {navLinks.map((link) => (
-          <Button key={`${link.href}-${link.label}`} variant="ghost" asChild className={commonLinkClass}>
-            <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-              {link.label}
-            </Link>
-          </Button>
-        ))}
+         <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              TV Shows <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild><Link href="/tv-shows-v1" onClick={closeMenu}>TV Shows V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/tv-shows-v2" onClick={closeMenu}>TV Shows V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/tv-shows-v3" onClick={closeMenu}>TV Shows V3</Link></DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+         <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              Subscription <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild><Link href="/subscription-v1" onClick={closeMenu}>Subscription V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/subscription-v2" onClick={closeMenu}>Subscription V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/subscription-v3" onClick={closeMenu}>Subscription V3</Link></DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              My Library <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem asChild><Link href="/my-library-v1" onClick={closeMenu}>My Library V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/my-library-v2" onClick={closeMenu}>My Library V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/my-library-v3" onClick={closeMenu}>My Library V3</Link></DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </>
     );
   }
