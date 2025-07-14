@@ -40,6 +40,7 @@ export function Header() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/homepage-v2', label: 'Home V2' },
     // The "Movies" link is now a dropdown
     { href: '/tv-shows', label: 'TV Shows' },
     { href: '/subscription', label: 'Subscription' },
@@ -54,6 +55,11 @@ export function Header() {
         <Button key="/" variant="ghost" asChild className={commonLinkClass}>
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
             Home
+          </Link>
+        </Button>
+        <Button key="/homepage-v2" variant="ghost" asChild className={commonLinkClass}>
+          <Link href="/homepage-v2" onClick={() => setIsMobileMenuOpen(false)}>
+            Home V2
           </Link>
         </Button>
         <DropdownMenu>
@@ -74,7 +80,7 @@ export function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {navLinks.slice(1).map((link) => (
+        {navLinks.slice(3).map((link) => (
           <Button key={`${link.href}-${link.label}`} variant="ghost" asChild className={commonLinkClass}>
             <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
               {link.label}
