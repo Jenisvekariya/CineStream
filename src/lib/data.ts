@@ -59,7 +59,7 @@ const movies: Movie[] = [
   {
     id: 'the-last-laugh',
     title: 'The Last Laugh',
-    poster: 'https://images.unsplash.com/photo-1649353577640-d3a040061b59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxDb21lZHklMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1571456331030-a1369bc759dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29tZWR5fGVufDB8fHx8MTc1MjQ4NTkxNHww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Comedy'],
     language: 'English',
@@ -112,7 +112,7 @@ const movies: Movie[] = [
   {
     id: 'love-in-paris',
     title: 'Love in Paris',
-    poster: 'https://images.unsplash.com/photo-1603681248580-c4a5e8b83105?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxyb21hbmNlJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1588857721040-78ec6be0f9aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyb21hbmNlJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Romance', 'Comedy'],
     language: 'French',
@@ -148,7 +148,7 @@ const movies: Movie[] = [
   {
     id: 'galaxy-guardians',
     title: 'Galaxy Guardians',
-    poster: 'https://images.unsplash.com/photo-1653850407281-d14b7ca79900?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c2NpLWZpJTIwYWN0aW9uJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1579972668140-f7da53ccc2a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzY2ktZmklMjBhY3Rpb24lMjBjb21lZHl8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Sci-Fi', 'Action', 'Comedy'],
     language: 'English',
@@ -220,7 +220,7 @@ const movies: Movie[] = [
   {
     id: 'movie-1',
     title: 'Generic Movie 1',
-    poster: 'https://images.unsplash.com/photo-1578301977947-cb446e84e8cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1584238832299-f37743d0bde8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2021,
     genres: ['Comedy', 'Romance'],
     language: 'English',
@@ -305,7 +305,7 @@ const movies: Movie[] = [
   {
       id: 'movie-6',
       title: 'Generic Movie 6',
-      poster: 'https://placehold.co/500x767/1a1a1a/ffffff.png',
+      poster: 'https://images.unsplash.com/photo-1578301977947-cb446e84e8cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
       year: 2021,
       genres: ['Comedy', 'Romance'],
       language: 'English',
