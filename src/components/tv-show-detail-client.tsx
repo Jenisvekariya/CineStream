@@ -10,6 +10,7 @@ import { PlayCircle, Clock } from 'lucide-react';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import { X } from 'lucide-react';
+import { Skeleton } from './ui/skeleton';
 
 type Episode = {
     id: string;
@@ -49,6 +50,13 @@ type TVShowDetailClientProps = {
 
 export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) {
   const [playingEpisode, setPlayingEpisode] = React.useState<Episode | null>(null);
+  const [seasonsData, setSeasonsData] = React.useState<Episode[][] | null>(null);
+  
+  React.useEffect(() => {
+    const allSeasonsData = Array.from({ length: show.seasons }, (_, i) => generateEpisodeData(i + 1));
+    setSeasonsData(allSeasonsData);
+  }, [show.seasons]);
+
 
   if (children) {
      if (playingEpisode) {
@@ -96,31 +104,44 @@ export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) 
                         ))}
                     </TabsList>
                      {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => {
-                        const episodes = generateEpisodeData(seasonNum);
+                        const episodes = seasonsData ? seasonsData[i] : null;
                         return (
                         <TabsContent key={seasonNum} value={`season-${seasonNum}`}>
                            <div className="space-y-4 mt-4">
-                                {episodes.map((episode, index) => (
-                                    <React.Fragment key={episode.id}>
-                                        <div className="flex items-start gap-4 p-2 rounded-lg hover:bg-muted/50 cursor-pointer" onClick={() => setPlayingEpisode(episode)}>
-                                            <div className="relative flex-shrink-0">
-                                                <Image src={episode.thumbnail} alt={episode.title} width={160} height={90} className="rounded-md object-cover" data-ai-hint="tv episode"/>
-                                                <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity">
-                                                    <PlayCircle className="w-8 h-8 text-white"/>
-                                                </div>
-                                            </div>
-                                            <div className="flex-grow">
-                                                <h4 className="font-semibold text-foreground">{episode.title}</h4>
-                                                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{episode.description}</p>
-                                                <div className="flex items-center text-xs text-muted-foreground mt-2">
-                                                    <Clock className="w-3 h-3 mr-1" />
-                                                    <span>{episode.duration}</span>
-                                                </div>
+                                {!episodes ? (
+                                    Array.from({ length: 5 }).map((_, idx) => (
+                                        <div key={idx} className="flex items-start gap-4 p-2">
+                                            <Skeleton className="w-[160px] h-[90px] rounded-md" />
+                                            <div className="flex-grow space-y-2">
+                                                <Skeleton className="h-5 w-3/4" />
+                                                <Skeleton className="h-4 w-full" />
+                                                <Skeleton className="h-4 w-1/2" />
                                             </div>
                                         </div>
-                                        {index < episodes.length - 1 && <Separator />}
-                                    </React.Fragment>
-                                ))}
+                                    ))
+                                ) : (
+                                    episodes.map((episode, index) => (
+                                        <React.Fragment key={episode.id}>
+                                            <div className="flex items-start gap-4 p-2 rounded-lg hover:bg-muted/50 cursor-pointer" onClick={() => setPlayingEpisode(episode)}>
+                                                <div className="relative flex-shrink-0">
+                                                    <Image src={episode.thumbnail} alt={episode.title} width={160} height={90} className="rounded-md object-cover" data-ai-hint="tv episode"/>
+                                                    <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity">
+                                                        <PlayCircle className="w-8 h-8 text-white"/>
+                                                    </div>
+                                                </div>
+                                                <div className="flex-grow">
+                                                    <h4 className="font-semibold text-foreground">{episode.title}</h4>
+                                                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{episode.description}</p>
+                                                    <div className="flex items-center text-xs text-muted-foreground mt-2">
+                                                        <Clock className="w-3 h-3 mr-1" />
+                                                        <span>{episode.duration}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {index < episodes.length - 1 && <Separator />}
+                                        </React.Fragment>
+                                    ))
+                                )}
                             </div>
                         </TabsContent>
                     )})}
