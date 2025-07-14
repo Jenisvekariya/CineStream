@@ -7,9 +7,10 @@ import { PlayCircle, ArrowDownToLine } from 'lucide-react';
 
 type MovieCardProps = {
   movie: Movie;
+  rank?: number;
 };
 
-export function MovieCard({ movie }: MovieCardProps) {
+export function MovieCard({ movie, rank }: MovieCardProps) {
   const posterHint = movie.genres.join(' ').toLowerCase();
   const lowestPrice = movie.isFree ? 0 : Math.min(...movie.qualities.map(q => q.price));
 
@@ -25,7 +26,14 @@ export function MovieCard({ movie }: MovieCardProps) {
             data-ai-hint={posterHint}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          <div className="absolute top-2 right-2 flex flex-col gap-1">
+          
+          {rank && (
+            <div className="absolute top-2 left-2 w-8 h-8 md:w-10 md:h-10 bg-primary/90 text-primary-foreground flex items-center justify-center font-bold text-lg md:text-xl rounded-full shadow-lg z-10">
+              {rank}
+            </div>
+          )}
+
+          <div className="absolute top-2 right-2 flex flex-col gap-1 z-10">
             {movie.qualities.slice(0, 2).map((q) => (
               <Badge key={q.quality} variant="secondary" className="text-xs">{q.quality}</Badge>
             ))}
@@ -47,7 +55,6 @@ export function MovieCard({ movie }: MovieCardProps) {
             </div>
           </div>
           
-          {/* Fallback content for when not hovered */}
           <div className="absolute bottom-0 left-0 right-0 p-4 group-hover:opacity-0 transition-opacity duration-300">
                <h3 className="font-headline text-lg font-bold text-white truncate">{movie.title}</h3>
           </div>
