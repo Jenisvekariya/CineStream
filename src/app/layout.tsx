@@ -3,6 +3,8 @@ import './globals.css';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeCustomizer } from '@/components/theme-customizer';
 
 export const metadata: Metadata = {
   title: 'CineStream',
@@ -18,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -31,11 +33,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-background text-foreground antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster />
+      <body className="bg-background text-foreground antialiased">
+        <ThemeProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+          <ThemeCustomizer />
+        </ThemeProvider>
       </body>
     </html>
   );
