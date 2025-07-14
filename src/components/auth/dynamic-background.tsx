@@ -60,7 +60,7 @@ export function DynamicBackground() {
             <div 
                 className="absolute inset-0 z-0 opacity-40"
                 style={{
-                    background: `radial-gradient(circle at center, ${primaryColor} 0%, transparent 60%)`,
+                    backgroundImage: `radial-gradient(circle at center, ${primaryColor} 0%, transparent 60%)`,
                     animation: 'move-gradient 20s ease infinite',
                     backgroundSize: '200% 200%'
                 }}
