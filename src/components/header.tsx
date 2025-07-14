@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -41,6 +42,7 @@ export function Header() {
     { href: '/', label: 'Home' },
     // The "Movies" link is now a dropdown
     { href: '#', label: 'TV Shows' },
+    { href: '/pricing', label: 'Pricing' },
     { href: '#', label: 'My Library' },
   ];
   
