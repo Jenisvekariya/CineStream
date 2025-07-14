@@ -4,7 +4,7 @@ const movies: Movie[] = [
   {
     id: 'cosmic-odyssey',
     title: 'Cosmic Odyssey',
-    poster: 'https://placehold.co/500x750/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1680339484064-1c06c34562a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxTY2ktRmklMjBBZHZlbnR1cmUlMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Sci-Fi', 'Adventure'],
     language: 'English',
@@ -23,7 +23,7 @@ const movies: Movie[] = [
   {
     id: 'echoes-of-the-past',
     title: 'Echoes of the Past',
-    poster: 'https://placehold.co/500x751/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1675295275003-552a83138c0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxRHJhbWElMjBNeXN0ZXJ5JTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NjMwfDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Drama', 'Mystery'],
     language: 'English',
@@ -41,7 +41,7 @@ const movies: Movie[] = [
   {
     id: 'cyber-runners',
     title: 'Cyber Runners',
-    poster: 'https://placehold.co/500x752/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1696479670605-aeeb206e1fcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxBY3Rpb24lMjBTY2ktRmklMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU2Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Action', 'Sci-Fi'],
     language: 'English',
@@ -59,7 +59,7 @@ const movies: Movie[] = [
   {
     id: 'the-last-laugh',
     title: 'The Last Laugh',
-    poster: 'https://placehold.co/500x753/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1649353577640-d3a040061b59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxDb21lZHklMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Comedy'],
     language: 'English',
@@ -77,7 +77,7 @@ const movies: Movie[] = [
   {
     id: 'beneath-the-surface',
     title: 'Beneath the Surface',
-    poster: 'https://placehold.co/500x754/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1620489922136-60b69e9e8463?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxUaHJpbGxlciUyMEhvcnJvciUyMG1vdmllfGVufDB8fHx8MTc1MjQ4NTYyOXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Thriller', 'Horror'],
     language: 'English',
