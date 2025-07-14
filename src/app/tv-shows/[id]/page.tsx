@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { getTVShowById, getTVShows } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -7,7 +8,6 @@ import { TVShowRow } from '@/components/tv-show-row';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
 
 type TVShowDetailPageProps = {
   params: {
