@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Film, Search, Menu, X, ChevronDown } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -13,6 +13,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel
 } from "@/components/ui/dropdown-menu"
 import { getGenres } from '@/lib/data';
 
@@ -112,6 +114,35 @@ export function Header() {
             <DropdownMenuItem asChild><Link href="/my-library-v3" onClick={closeMenu}>My Library V3</Link></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+              Auth Pages <ChevronDown className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Login</DropdownMenuLabel>
+            <DropdownMenuItem asChild><Link href="/login-v1" onClick={closeMenu}>Login V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/login-v2" onClick={closeMenu}>Login V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/login-v3" onClick={closeMenu}>Login V3</Link></DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>Sign Up</DropdownMenuLabel>
+            <DropdownMenuItem asChild><Link href="/signup-v1" onClick={closeMenu}>Sign Up V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/signup-v2" onClick={closeMenu}>Sign Up V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/signup-v3" onClick={closeMenu}>Sign Up V3</Link></DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>Forgot Password</DropdownMenuLabel>
+            <DropdownMenuItem asChild><Link href="/forgot-password-v1" onClick={closeMenu}>Forgot Password V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/forgot-password-v2" onClick={closeMenu}>Forgot Password V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/forgot-password-v3" onClick={closeMenu}>Forgot Password V3</Link></DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>OTP</DropdownMenuLabel>
+            <DropdownMenuItem asChild><Link href="/otp-v1" onClick={closeMenu}>OTP V1</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/otp-v2" onClick={closeMenu}>OTP V2</Link></DropdownMenuItem>
+            <DropdownMenuItem asChild><Link href="/otp-v3" onClick={closeMenu}>OTP V3</Link></DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </>
     );
   }
@@ -125,7 +156,7 @@ export function Header() {
             <Film className="h-7 w-7 text-primary" />
             <span className="font-headline text-2xl font-bold text-white">CineStream</span>
           </Link>
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-2">
             <NavItems />
           </nav>
         </div>
@@ -145,9 +176,25 @@ export function Header() {
               </Button>
             </form>
           </div>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild><Link href="/account">Account</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/profile">Profile</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/manage-subscription">Subscription</Link></DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
