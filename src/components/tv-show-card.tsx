@@ -12,7 +12,7 @@ export function TVShowCard({ show }: TVShowCardProps) {
   const posterHint = show.genres.join(' ').toLowerCase();
 
   return (
-    <Link href="#" className="block group relative overflow-hidden rounded-lg shadow-lg aspect-[2/3] transition-transform duration-300 ease-in-out hover:scale-105">
+    <Link href={`/tv-shows/${show.id}`} className="block group relative overflow-hidden rounded-lg shadow-lg aspect-[2/3] transition-transform duration-300 ease-in-out hover:scale-105">
       <Image
         src={show.poster}
         alt={show.title}
