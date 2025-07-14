@@ -42,7 +42,7 @@ export function Header() {
     { href: '/', label: 'Home' },
     // The "Movies" link is now a dropdown
     { href: '#', label: 'TV Shows' },
-    { href: '/pricing', label: 'Pricing' },
+    { href: '/subscription', label: 'Subscription' },
     { href: '#', label: 'My Library' },
   ];
   
