@@ -75,7 +75,7 @@ export function Header() {
         </DropdownMenu>
 
         {navLinks.slice(1).map((link) => (
-          <Button key={link.href} variant="ghost" asChild className={commonLinkClass}>
+          <Button key={`${link.href}-${link.label}`} variant="ghost" asChild className={commonLinkClass}>
             <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
               {link.label}
             </Link>
