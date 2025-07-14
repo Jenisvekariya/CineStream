@@ -6,9 +6,9 @@ type AuthLayoutProps = {
 
 export function AuthLayout({ children }: AuthLayoutProps) {
     return (
-        <div className="relative flex min-h-screen flex-col items-center justify-center">
+        <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
             <DynamicBackground />
-            <div className="relative z-10 w-full px-4">
+            <div className="relative z-10 flex w-full items-center justify-center px-4">
                 {children}
             </div>
         </div>
