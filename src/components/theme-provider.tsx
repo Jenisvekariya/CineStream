@@ -1,3 +1,4 @@
+
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -57,6 +58,12 @@ function ThemeConfigProvider({ children }: { children: React.ReactNode }) {
       const root = document.documentElement;
       root.style.setProperty('--primary', selectedTheme.primary);
       root.style.setProperty('--accent', selectedTheme.accent);
+      if (selectedTheme.primaryForeground) {
+        root.style.setProperty('--primary-foreground', selectedTheme.primaryForeground);
+      }
+      if (selectedTheme.accentForeground) {
+        root.style.setProperty('--accent-foreground', selectedTheme.accentForeground);
+      }
     }
   }, [theme, resolvedTheme]);
 
