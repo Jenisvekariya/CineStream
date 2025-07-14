@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getTVShows, getTVShowGenres } from '@/lib/tv-data';
+import { getTVShows, getTVShowGenres } from '@/lib/data';
 import type { TVShow } from '@/lib/types';
 import { TVShowCard } from '@/components/tv-show-card';
 import { Input } from '@/components/ui/input';
