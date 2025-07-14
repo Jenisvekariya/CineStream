@@ -20,3 +20,16 @@ export type Movie = {
   isFree: boolean;
   trailerUrl: string;
 };
+
+export type TVShow = {
+  id: string;
+  title: string;
+  poster: string;
+  startYear: number;
+  endYear: number | null;
+  genres: string[];
+  description: string;
+  rating: number;
+  seasons: number;
+  isFree: boolean;
+};

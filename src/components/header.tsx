@@ -41,7 +41,7 @@ export function Header() {
   const navLinks = [
     { href: '/', label: 'Home' },
     // The "Movies" link is now a dropdown
-    { href: '#', label: 'TV Shows' },
+    { href: '/tv-shows', label: 'TV Shows' },
     { href: '/subscription', label: 'Subscription' },
     { href: '#', label: 'My Library' },
   ];
