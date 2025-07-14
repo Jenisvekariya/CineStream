@@ -2,86 +2,92 @@ export const themes = [
     {
         name: 'default',
         label: 'Red & Black',
-        primary: '3.8 93.1% 55.9%', // #E50914
-        accent: '0 0% 12.9%', // #212121
+        primary: '357 79% 53%', // #E50914
+        accent: '0 0% 8%', // #141414
     },
     {
         name: 'crimson-charcoal',
         label: 'Crimson & Charcoal',
-        primary: '348.1 82.6% 47.1%', // #DC143C
+        primary: '348 83% 47%', // #DC143C
         accent: '0 0% 11%', // #1C1C1C
     },
     {
         name: 'deep-purple-jet-black',
         label: 'Deep Purple & Jet Black',
-        primary: '271.3 100% 33.5%', // #6A0DAD
-        accent: '0 0% 7.1%', // #121212
+        primary: '271 100% 34%', // #6A0DAD
+        accent: '0 0% 7%', // #121212
     },
     {
         name: 'electric-blue-graphite',
         label: 'Electric Blue & Graphite',
-        primary: '228.8 100% 56.3%', // #1F51FF
-        accent: '0 0% 16.5%', // #2A2A2A
+        primary: '229 100% 56%', // #1F51FF
+        accent: '0 0% 16%', // #2A2A2A
     },
     {
         name: 'cyan-night-black',
         label: 'Cyan & Night Black',
         primary: '180 100% 50%', // #00FFFF
-        accent: '0 0% 5.1%', // #0D0D0D
+        accent: '0 0% 5%', // #0D0D0D
     },
     {
         name: 'neon-pink-black',
         label: 'Neon Pink & Black',
-        primary: '329.8 100% 50%', // #FF007F
-        accent: '0 0% 6.3%', // #101010
+        primary: '330 100% 50%', // #FF007F
+        accent: '0 0% 6%', // #101010
     },
     {
         name: 'lime-green-dark-slate',
         label: 'Lime Green & Dark Slate',
-        primary: '120 60.8% 49.8%', // #32CD32
-        accent: '0 0% 10.2%', // #1A1A1A
+        primary: '120 61% 50%', // #32CD32
+        accent: '0 0% 10%', // #1A1A1A
     },
     {
         name: 'hot-orange-charcoal',
         label: 'Hot Orange & Charcoal',
-        primary: '15.9 100% 50%', // #FF4500
-        accent: '0 0% 10.6%', // #1B1B1B
+        primary: '16 100% 50%', // #FF4500
+        accent: '0 0% 11%', // #1B1B1B
     },
     {
         name: 'turquoise-dark-navy',
         label: 'Turquoise & Dark Navy',
-        primary: '174.4 72.3% 56.5%', // #40E0D0
-        accent: '232.9 66.7% 8.8%', // #0A0A23
+        primary: '174 72% 56%', // #40E0D0
+        accent: '240 67% 9%', // #0A0A23
+    },
+    {
+        name: 'electric-purple-black',
+        label: 'Electric Purple & Black',
+        primary: '288 100% 50%', // #BF00FF
+        accent: '0 0% 7%', // #121212
     },
     {
         name: 'maroon-dark-grey',
         label: 'Maroon & Dark Grey',
-        primary: '0 100% 25.1%', // #800000
-        accent: '0 0% 12.5%', // #202020
+        primary: '0 100% 25%', // #800000
+        accent: '0 0% 13%', // #202020
     },
     {
         name: 'gold-jet-black',
         label: 'Gold & Jet Black',
-        primary: '50.9 100% 50%', // #FFD700
-        accent: '0 0% 6.7%', // #111111
+        primary: '51 100% 50%', // #FFD700
+        accent: '0 0% 7%', // #111111
     },
     {
         name: 'indigo-obsidian',
         label: 'Indigo & Obsidian',
-        primary: '275.1 100% 25.5%', // #4B0082
-        accent: '0 0% 4.3%', // #0B0B0B
+        primary: '275 100% 25%', // #4B0082
+        accent: '0 0% 4%', // #0B0B0B
     },
     {
         name: 'burgundy-slate-grey',
         label: 'Burgundy & Slate Grey',
-        primary: '0 100% 27.3%', // #8B0000
-        accent: '0 0% 18.4%', // #2F2F2F
+        primary: '0 100% 27%', // #8B0000
+        accent: '0 0% 18%', // #2F2F2F
     },
     {
         name: 'royal-blue-gunmetal',
         label: 'Royal Blue & Gunmetal',
-        primary: '221.2 70.8% 56.9%', // #4169E1
-        accent: '0 0% 17.3%', // #2C2C2C
+        primary: '221 71% 57%', // #4169E1
+        accent: '0 0% 17%', // #2C2C2C
     },
 ];
 
@@ -89,8 +95,8 @@ export const fonts = [
     {
         name: 'default',
         label: 'Poppins / PT Sans',
-        headline: 'var(--font-poppins)',
-        body: 'var(--font-pt-sans)',
+        headline: "'Poppins', sans-serif",
+        body: "'PT Sans', sans-serif",
     },
     {
         name: 'bebas-roboto',
