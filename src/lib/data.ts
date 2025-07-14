@@ -41,7 +41,7 @@ const movies: Movie[] = [
   {
     id: 'cyber-runners',
     title: 'Cyber Runners',
-    poster: 'https://images.unsplash.com/photo-1696479670605-aeeb206e1fcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxBY3Rpb24lMjBTY2ktRmklMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU2Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1699060463533-94ceb428c67f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhY3Rpb24lMjBzY2ktZml8ZW58MHx8fHwxNzUyNDg1ODI1fDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Action', 'Sci-Fi'],
     language: 'English',
@@ -94,7 +94,7 @@ const movies: Movie[] = [
   {
     id: 'path-of-the-samurai',
     title: 'Path of the Samurai',
-    poster: 'https://images.unsplash.com/photo-1733648222907-0bb67d214c13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhY3Rpb24lMjBkcmFtYXxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1623672425683-89654c9ecd9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWN0aW9uJTIwZHJhbWF8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2021,
     genres: ['Action', 'Drama'],
     language: 'Japanese',
@@ -148,7 +148,7 @@ const movies: Movie[] = [
   {
     id: 'galaxy-guardians',
     title: 'Galaxy Guardians',
-    poster: 'https://images.unsplash.com/photo-1745483584899-2f65cfb1bae4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2ktZmklMjBhY3Rpb24lMjBjb21lZHl8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1653850407281-d14b7ca79900?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c2NpLWZpJTIwYWN0aW9uJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Sci-Fi', 'Action', 'Comedy'],
     language: 'English',
@@ -184,7 +184,7 @@ const movies: Movie[] = [
   {
     id: 'zero-day',
     title: 'Zero Day',
-    poster: 'https://images.unsplash.com/photo-1747330022587-e4e5a0f0f5c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aHJpbGxlciUyMGFjdGlvbnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1731575115709-d4325615e868?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0aHJpbGxlciUyMGFjdGlvbnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Thriller', 'Action'],
     language: 'English',
@@ -288,7 +288,7 @@ const movies: Movie[] = [
   {
       id: 'movie-5',
       title: 'Generic Movie 5',
-      poster: 'https://placehold.co/500x766/1a1a1a/ffffff.png',
+      poster: 'https://images.unsplash.com/photo-1636812506372-5a88f22881bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhY3Rpb24lMjB0aHJpbGxlcnxlbnwwfHx8fDE3NTI0ODU4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080',
       year: 2020,
       genres: ['Action', 'Thriller'],
       language: 'English',
@@ -373,7 +373,7 @@ const movies: Movie[] = [
   {
       id: 'movie-10',
       title: 'Generic Movie 10',
-      poster: 'https://placehold.co/500x771/1a1a1a/ffffff.png',
+      poster: 'https://images.unsplash.com/photo-1704968538858-df20c4568845?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhY3Rpb24lMjB0aHJpbGxlcnxlbnwwfHx8fDE3NTI0ODU4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080',
       year: 2020,
       genres: ['Action', 'Thriller'],
       language: 'English',
