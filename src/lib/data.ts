@@ -218,21 +218,122 @@ const movies: Movie[] = [
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   },
   {
-    id: 'movie-1',
-    title: 'Generic Movie 1',
-    poster: 'https://images.unsplash.com/photo-1584238832299-f37743d0bde8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
-    year: 2021,
-    genres: ['Comedy', 'Romance'],
+    id: 'chronicles-of-narnia',
+    title: 'The Chronicles of Narnia',
+    poster: 'https://images.unsplash.com/photo-1586041113888-910443a593d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmYW50YXN5JTIwYWR2ZW50dXJlJTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NzE4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2005,
+    genres: ['Fantasy', 'Adventure', 'Family'],
     language: 'English',
-    duration: '1h 42m',
-    description: 'This is a generic description for movie 1. It\'s a fantastic film that you won\'t want to miss.',
-    rating: 6.6,
+    duration: '2h 23m',
+    description: 'Four London children are sent to a professor\'s country home where they discover a wardrobe that leads to a magical land called Narnia.',
+    rating: 7.0,
     qualities: [
-        { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
-        { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      { quality: '720p', price: 3.99, downloadLink: '#', streamLink: '#', fileSize: '1.4 GB' },
+      { quality: '1080p', price: 6.99, downloadLink: '#', streamLink: '#', fileSize: '2.8 GB' }
+    ],
+    isFree: true,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'interstellar-echo',
+    title: 'Interstellar Echo',
+    poster: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzY2ktZmklMjBtb3ZpZSUyMHBvc3RlcnxlbnwwfHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2025,
+    genres: ['Sci-Fi', 'Thriller'],
+    language: 'English',
+    duration: '2h 35m',
+    description: 'An astronaut on a solo mission receives a distress signal from a long-lost spaceship, leading him to a discovery that could change the fate of humanity.',
+    rating: 9.1,
+    qualities: [
+      { quality: '1080p', price: 10.99, downloadLink: '#', streamLink: '#', fileSize: '3.8 GB' },
+      { quality: '4K', price: 19.99, downloadLink: '#', streamLink: '#', fileSize: '11.0 GB' }
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'the-last-heir',
+    title: 'The Last Heir',
+    poster: 'https://images.unsplash.com/photo-1608889150934-914a1c1f51e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYW50YXN5JTIwa2luZ2RvbSUyMG1vdmllfGVufDB8fHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2023,
+    genres: ['Fantasy', 'Action', 'Adventure'],
+    language: 'English',
+    duration: '2h 18m',
+    description: 'The last heir of a fallen kingdom must reclaim their birthright from a tyrannical sorcerer with the help of a band of unlikely heroes.',
+    rating: 8.4,
+    qualities: [
+      { quality: '1080p', price: 9.99, downloadLink: '#', streamLink: '#', fileSize: '3.4 GB' },
+      { quality: '4K', price: 17.99, downloadLink: '#', streamLink: '#', fileSize: '9.5 GB' }
+    ],
+    isFree: false,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'midnight-motel',
+    title: 'Midnight Motel',
+    poster: 'https://images.unsplash.com/photo-1596701047817-205931115e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxteXN0ZXJ5JTIwdGhyaWxsZXIlMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2022,
+    genres: ['Mystery', 'Thriller', 'Horror'],
+    language: 'English',
+    duration: '1h 41m',
+    description: 'A group of strangers stranded at a remote motel during a storm discover that one of them is a killer, and they must identify the culprit before it\'s too late.',
+    rating: 7.3,
+    qualities: [
+      { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.2 GB' },
+      { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '2.4 GB' }
+    ],
+    isFree: false,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'the-art-of-war',
+    title: 'The Art of War',
+    poster: 'https://images.unsplash.com/photo-1569032488836-82998a0c20f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHdoaXN0b3JpY2FsJTIwd2FyJTIwZHJhbWElMjBtb3ZpZXxlbnwwfHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2020,
+    genres: ['History', 'Drama', 'War'],
+    language: 'English',
+    duration: '2h 50m',
+    description: 'A gripping depiction of one of history\'s most significant battles, told from the perspectives of the soldiers and leaders on both sides.',
+    rating: 8.6,
+    qualities: [
+      { quality: '1080p', price: 9.99, downloadLink: '#', streamLink: '#', fileSize: '3.9 GB' },
+      { quality: '4K', price: 18.99, downloadLink: '#', streamLink: '#', fileSize: '12.0 GB' }
+    ],
+    isFree: false,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+    id: 'city-of-dreams',
+    title: 'City of Dreams',
+    poster: 'https://images.unsplash.com/photo-1518933230403-8e7c39331526?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMGRyYW1hJTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NzE4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    year: 2023,
+    genres: ['Romance', 'Drama', 'Music'],
+    language: 'English',
+    duration: '2h 05m',
+    description: 'An aspiring actress and a jazz pianist chase their dreams in Los Angeles, but their ambitions threaten to tear their passionate love affair apart.',
+    rating: 8.0,
+    qualities: [
+      { quality: '1080p', price: 8.99, downloadLink: '#', streamLink: '#', fileSize: '3.1 GB' }
+    ],
+    isFree: false,
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+  },
+  {
+      id: 'movie-1',
+      title: 'Generic Movie 1',
+      poster: 'https://images.unsplash.com/photo-1584238832299-f37743d0bde8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb21lZHklMjByb21hbmNlfGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+      year: 2021,
+      genres: ['Comedy', 'Romance'],
+      language: 'English',
+      duration: '1h 42m',
+      description: 'This is a generic description for movie 1. It\'s a fantastic film that you won\'t want to miss.',
+      rating: 6.6,
+      qualities: [
+          { quality: '720p', price: 4.99, downloadLink: '#', streamLink: '#', fileSize: '1.5 GB' },
+          { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
+      ],
+      isFree: false,
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
   },
   {
       id: 'movie-2',
@@ -553,6 +654,54 @@ const tvShows: TVShow[] = [
     seasons: 4,
     isFree: false,
   },
+  {
+    id: 'the-people-vs-oj',
+    title: 'The People v. O. J. Simpson',
+    poster: 'https://images.unsplash.com/photo-1552862737-147171a829e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmèBtZSUyMHR2JTIwc2hvd3xlbnwwfHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    startYear: 2016,
+    endYear: 2016,
+    genres: ['Crime', 'Drama', 'Biography'],
+    description: 'A limited series that explores the O. J. Simpson trial from the perspective of the lawyers, examining the chaotic behind-the-scenes dealings and maneuvering on both sides of the court.',
+    rating: 8.4,
+    seasons: 1,
+    isFree: false,
+  },
+  {
+    id: 'narcos-story',
+    title: 'Narcos Story',
+    poster: 'https://images.unsplash.com/photo-1562908285-074a2614b184?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcnltZSUyMHRocmlsbGVyJTIwdHYlMjBzaG93fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    startYear: 2015,
+    endYear: 2017,
+    genres: ['Crime', 'Drama', 'Thriller'],
+    description: 'A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar, as well as the many other drug kingpins who plagued the country through the years.',
+    rating: 8.8,
+    seasons: 3,
+    isFree: false,
+  },
+  {
+    id: 'the-mandalorian-wars',
+    title: 'The Mandalorian Wars',
+    poster: 'https://images.unsplash.com/photo-1596701047817-205931115e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzY2ktZmklMjB3ZXN0ZXJuJTIwdHYlMjBzaG93fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    startYear: 2019,
+    endYear: null,
+    genres: ['Sci-Fi', 'Action', 'Adventure', 'Western'],
+    description: 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.',
+    rating: 8.7,
+    seasons: 3,
+    isFree: false,
+  },
+  {
+    id: 'the-witcher-saga',
+    title: 'The Witcher Saga',
+    poster: 'https://images.unsplash.com/photo-1596701047817-205931115e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYW50YXN5JTIwYWN0aW9uJTIwdHYlMjBzaG93fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    startYear: 2019,
+    endYear: null,
+    genres: ['Fantasy', 'Action', 'Adventure', 'Drama'],
+    description: 'Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.',
+    rating: 8.2,
+    seasons: 3,
+    isFree: false,
+  }
 ];
 
 export async function getTVShows() {

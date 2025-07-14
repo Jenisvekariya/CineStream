@@ -51,7 +51,7 @@ export function FeaturedContent({ topMovie, featuredMovies }: FeaturedContentPro
       {/* Featured List */}
       <div className="lg:col-span-2">
         <h2 className="text-3xl font-headline font-bold mb-6">Featured This Month</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {featuredMovies.map((movie) => (
             <Link key={movie.id} href={`/movies/${movie.id}`} className="group">
               <div className="relative aspect-[2/3] rounded-lg overflow-hidden">
