@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Film, Search, Menu, X, ChevronDown, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -200,17 +200,20 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
+              <SheetHeader className="p-4 border-b">
+                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                 <div className="flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Film className="h-7 w-7 text-primary" />
+                      <span className="font-headline text-2xl font-bold text-white">CineStream</span>
+                    </Link>
+                    <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                      <X className="h-6 w-6" />
+                      <span className="sr-only">Close menu</span>
+                    </Button>
+                 </div>
+              </SheetHeader>
               <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-4 border-b">
-                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Film className="h-7 w-7 text-primary" />
-                    <span className="font-headline text-2xl font-bold text-white">CineStream</span>
-                  </Link>
-                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                    <X className="h-6 w-6" />
-                    <span className="sr-only">Close menu</span>
-                  </Button>
-                </div>
                 <nav className="flex flex-col gap-1 p-4">
                   <NavItems isMobile />
                 </nav>
