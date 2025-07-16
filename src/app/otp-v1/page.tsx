@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AuthLayout } from "@/components/auth/auth-layout";
+import { AuthLayout } from "@/components/layout/auth-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
