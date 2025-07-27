@@ -1,5 +1,9 @@
+'use client';
+
 import { User, Shield, CreditCard, Bell, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const menuItems = [
     {
@@ -15,6 +19,8 @@ const menuItems = [
 ];
 
 export default function AccountPage() {
+    const pathname = usePathname();
+
     return (
         <div className="bg-background text-foreground min-h-screen">
             <div className="container mx-auto px-4 py-8 md:py-16">
@@ -30,8 +36,13 @@ export default function AccountPage() {
                                         <ul className="space-y-1">
                                             {group.items.map((item) => (
                                                 <li key={item.label}>
-                                                    <Link href={item.href} className="flex items-center gap-3 px-3 py-2 rounded-md text-foreground hover:bg-muted transition-colors">
-                                                        <item.icon className="w-5 h-5 text-muted-foreground" />
+                                                    <Link href={item.href} className={cn(
+                                                        "flex items-center gap-3 px-3 py-2 rounded-md transition-colors",
+                                                        pathname === item.href 
+                                                            ? "bg-primary text-primary-foreground hover:bg-primary/90" 
+                                                            : "text-foreground hover:bg-muted"
+                                                    )}>
+                                                        <item.icon className={cn("w-5 h-5", pathname === item.href ? "text-primary-foreground/80" : "text-muted-foreground")} />
                                                         <span>{item.label}</span>
                                                     </Link>
                                                 </li>
