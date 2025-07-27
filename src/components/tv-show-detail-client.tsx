@@ -6,12 +6,14 @@ import type { TVShow } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
-import { PlayCircle, Clock, Play } from 'lucide-react';
+import { PlayCircle, Clock, Play, Plus, Check } from 'lucide-react';
 import { Separator } from './ui/separator';
 import { Skeleton } from './ui/skeleton';
 import { VideoPlayer } from './video-player';
 import { Button } from './ui/button';
 import { StatsBar } from './stats-bar';
+import { useWatchlist } from '@/hooks/use-watchlist';
+import { useToast } from '@/hooks/use-toast';
 
 type Episode = {
     id: string;
@@ -83,6 +85,21 @@ export function TVShowDetailClient({ show, children }: { show: TVShow, children:
 
 export function TVShowContent() {
     const { show, seasonsData, setPlayingEpisode } = useTVShowDetail();
+    const { watchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
+    const { toast } = useToast();
+
+    const isInWatchlist = watchlist.some((item) => item.id === show.id);
+
+    const handleToggleWatchlist = () => {
+        if (isInWatchlist) {
+            removeFromWatchlist(show.id);
+            toast({ title: "Removed from My List", description: `"${show.title}" has been removed from your list.` });
+        } else {
+            addToWatchlist(show);
+            toast({ title: "Added to My List", description: `"${show.title}" has been added to your list.` });
+        }
+    };
+
 
     const handlePlayFirstEpisode = () => {
         if (seasonsData && seasonsData.length > 0 && seasonsData[0].length > 0) {
@@ -97,10 +114,14 @@ export function TVShowContent() {
                     <Play className="mr-2 h-6 w-6 fill-current" />
                     Play First Episode
                 </Button>
-                <div className="w-full sm:w-auto flex-grow">
-                    <StatsBar views={show.views} initialLikes={show.likes} initialDislikes={show.dislikes} />
-                </div>
+                <Button variant="outline" className="w-full sm:w-auto" onClick={handleToggleWatchlist}>
+                    {isInWatchlist ? <Check className="mr-2 h-4 w-4" /> : <Plus className="mr-2 h-4 w-4" />}
+                     My List
+                </Button>
             </div>
+             <div className="mt-4">
+                 <StatsBar views={show.views} initialLikes={show.likes} initialDislikes={show.dislikes} />
+             </div>
             <div className="space-y-8 pt-4">
                 <div>
                     <h2 className="text-2xl font-headline font-semibold mb-2">Storyline</h2>

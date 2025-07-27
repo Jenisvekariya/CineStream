@@ -24,6 +24,8 @@ export type Comment = {
   text: string;
 };
 
+export type ContentItem = Movie | TVShow;
+
 export type Movie = {
   id: string;
   title: string;
@@ -42,6 +44,7 @@ export type Movie = {
   dislikes: number;
   reviews: Review[];
   comments: Comment[];
+  type: 'movie';
 };
 
 export type TVShow = {
@@ -60,4 +63,5 @@ export type TVShow = {
   dislikes: number;
   reviews: Review[];
   comments: Comment[];
+  type: 'tv-show';
 };

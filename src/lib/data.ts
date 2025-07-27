@@ -11,7 +11,7 @@ const genericComments: Comment[] = [
 ];
 
 
-const movies: Movie[] = [
+const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'cosmic-odyssey',
     title: 'Cosmic Odyssey',
@@ -641,26 +641,7 @@ const movies: Movie[] = [
   }
 ];
 
-export async function getMovies() {
-  // In a real app, you would fetch this data from an API
-  return movies;
-}
-
-export async function getMovieById(id: string) {
-  // In a real app, you would fetch this data from an API
-  return movies.find((movie) => movie.id === id);
-}
-
-export async function getGenres() {
-  const genres = new Set<string>();
-  movies.forEach(movie => {
-    movie.genres.forEach(genre => genres.add(genre));
-  });
-  return Array.from(genres);
-}
-
-
-const tvShows: TVShow[] = [
+const tvShows: Omit<TVShow, 'type'>[] = [
   {
     id: 'throne-of-swords',
     title: 'Throne of Swords',
@@ -715,7 +696,7 @@ const tvShows: TVShow[] = [
   {
     id: 'the-last-colony',
     title: 'The Last Colony',
-    poster: 'https://images.unsplash.com/photo-1517976487-151210449a63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzcGFjZSUyMGNvbG9ueSUyMHR2JTIwc2hvd3xlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1697564264886-3208e56eb4bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzY2ktZmklMjBkcmFtYXxlbnwwfHx8fDE3NTM2MjI5ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2024,
     endYear: null,
     genres: ['Sci-Fi', 'Drama'],
@@ -749,7 +730,7 @@ const tvShows: TVShow[] = [
   {
     id: 'haunting-hill-house',
     title: 'The Haunting of Hill House',
-    poster: 'https://images.unsplash.com/photo-1606828834437-a25925d48a8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob3Jyb3IlMjB0diUyMHNob3d8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1635928060878-b8dff10902ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxob3Jyb3IlMjBkcmFtYSUyMG15c3Rlcnl8ZW58MHx8fHwxNzUzNjIyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2018,
     endYear: 2018,
     genres: ['Horror', 'Drama', 'Mystery'],
@@ -800,7 +781,7 @@ const tvShows: TVShow[] = [
    {
     id: 'stranger-signals',
     title: 'Stranger Signals',
-    poster: 'https://images.unsplash.com/photo-1618165439977-8d2349b38a7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzY2ktZmklMjBob3Jyb3IlMjB0dnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1570541885123-b73a0b1cdf1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjBob3Jyb3IlMjBkcmFtYXxlbnwwfHx8fDE3NTM2MjI5ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2016,
     endYear: null,
     genres: ['Sci-Fi', 'Horror', 'Drama'],
@@ -834,7 +815,7 @@ const tvShows: TVShow[] = [
   {
     id: 'breaking-badly',
     title: 'Breaking Badly',
-    poster: 'https://images.unsplash.com/photo-1596701047817-205931115e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcnltZSUyMGRyYW1hJTIwdHZ8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1678279501688-d0581a8993dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjcmltZSUyMGRyYW1hJTIwdGhyaWxsZXJ8ZW58MHx8fHwxNzUzNjIyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2008,
     endYear: 2013,
     genres: ['Crime', 'Drama', 'Thriller'],
@@ -851,7 +832,7 @@ const tvShows: TVShow[] = [
   {
     id: 'sherlock-holmes-modern',
     title: 'Sherlock Holmes Modern',
-    poster: 'https://images.unsplash.com/photo-1504917595217-d4d54711211e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkZXRlY3RpdmUlMjB0dnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1739701259004-0876734d4997?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjcmltZSUyMGRyYW1hJTIwbXlzdGVyeXxlbnwwfHx8fDE3NTM2MjI5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2010,
     endYear: 2017,
     genres: ['Crime', 'Drama', 'Mystery'],
@@ -868,7 +849,7 @@ const tvShows: TVShow[] = [
   {
     id: 'the-people-vs-oj',
     title: 'The People v. O. J. Simpson',
-    poster: 'https://images.unsplash.com/photo-1552862737-147171a829e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmèBtZSUyMHR2JTIwc2hvd3xlbnwwfHx8fDE3NTI0ODU3ETh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1745417704139-c6be3ed630f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmltZSUyMGRyYW1hJTIwYmlvZ3JhcGh5fGVufDB8fHx8MTc1MzYyMjk4Nnww&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2016,
     endYear: 2016,
     genres: ['Crime', 'Drama', 'Biography'],
@@ -885,7 +866,7 @@ const tvShows: TVShow[] = [
   {
     id: 'narcos-story',
     title: 'Narcos Story',
-    poster: 'https://images.unsplash.com/photo-1562908285-074a2614b184?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcnltZSUyMHRocmlsbGVyJTIwdHYlMjBzaG93fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1701854851797-59656d43e5fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjcmltZSUyMGRyYW1hJTIwdGhyaWxsZXJ8ZW58MHx8fHwxNzUzNjIyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2015,
     endYear: 2017,
     genres: ['Crime', 'Drama', 'Thriller'],
@@ -902,7 +883,7 @@ const tvShows: TVShow[] = [
   {
     id: 'the-mandalorian-wars',
     title: 'The Mandalorian Wars',
-    poster: 'https://images.unsplash.com/photo-1596701047817-205931115e58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzY2ktZmklMjB3ZXN0ZXJuJTIwdHYlMjBzaG93fGVufDB8fHx8MTc1MjQ4NTcxOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1647692053985-e4d0c915a2af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzY2ktZmklMjBhY3Rpb24lMjBhZHZlbnR1cmUlMjB3ZXN0ZXJufGVufDB8fHx8MTc1MzYyMjk4Nnww&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2019,
     endYear: null,
     genres: ['Sci-Fi', 'Action', 'Adventure', 'Western'],
@@ -953,7 +934,7 @@ const tvShows: TVShow[] = [
   {
     id: 'arcane',
     title: 'Arcane',
-    poster: 'https://placehold.co/500x751/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1614950347612-1824dbfd8ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbmltYXRpb24lMjBhY3Rpb24lMjBzY2ktZml8ZW58MHx8fHwxNzUzNjIyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2021,
     endYear: null,
     genres: ['Animation', 'Action', 'Sci-Fi'],
@@ -970,7 +951,7 @@ const tvShows: TVShow[] = [
   {
     id: 'the-boys',
     title: 'The Boys',
-    poster: 'https://placehold.co/500x752/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1648475113220-dd16708e8294?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhY3Rpb24lMjBjb21lZHklMjBjcmltZXxlbnwwfHx8fDE3NTM2MjI5ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2019,
     endYear: null,
     genres: ['Action', 'Comedy', 'Crime'],
@@ -987,7 +968,7 @@ const tvShows: TVShow[] = [
   {
     id: 'severance',
     title: 'Severance',
-    poster: 'https://placehold.co/500x753/1a1a1a/ffffff.png',
+    poster: 'https://images.unsplash.com/photo-1654764746504-cf01f4de040a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkcmFtYSUyMG15c3RlcnklMjBzY2ktZml8ZW58MHx8fHwxNzUzNjIyOTg2fDA&ixlib=rb-4.1.0&q=80&w=1080',
     startYear: 2022,
     endYear: null,
     genres: ['Drama', 'Mystery', 'Sci-Fi'],
@@ -1003,14 +984,34 @@ const tvShows: TVShow[] = [
   }
 ];
 
-export async function getTVShows() {
+export async function getMovies(): Promise<Movie[]> {
   // In a real app, you would fetch this data from an API
-  return tvShows;
+  return movies.map(movie => ({ ...movie, type: 'movie' }));
+}
+
+export async function getMovieById(id: string) {
+  // In a real app, you would fetch this data from an API
+  const movie = movies.find((movie) => movie.id === id);
+  return movie ? { ...movie, type: 'movie' as const } : undefined;
+}
+
+export async function getGenres() {
+  const genres = new Set<string>();
+  movies.forEach(movie => {
+    movie.genres.forEach(genre => genres.add(genre));
+  });
+  return Array.from(genres);
+}
+
+export async function getTVShows(): Promise<TVShow[]> {
+  // In a real app, you would fetch this data from an API
+  return tvShows.map(show => ({ ...show, type: 'tv-show' }));
 }
 
 export async function getTVShowById(id: string) {
   // In a real app, you would fetch this data from an API
-  return tvShows.find((show) => show.id === id);
+  const show = tvShows.find((show) => show.id === id);
+  return show ? { ...show, type: 'tv-show' as const } : undefined;
 }
 
 export async function getTVShowGenres() {

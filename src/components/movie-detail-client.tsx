@@ -7,8 +7,10 @@ import type { Movie, MovieQuality } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { PlayCircle, ArrowDownToLine } from 'lucide-react';
+import { PlayCircle, ArrowDownToLine, Plus, Check } from 'lucide-react';
 import { VideoPlayer } from './video-player';
+import { useWatchlist } from '@/hooks/use-watchlist';
+import { useToast } from '@/hooks/use-toast';
 
 type MovieDetailClientProps = {
   movie: Movie;
@@ -17,6 +19,20 @@ type MovieDetailClientProps = {
 export function MovieDetailClient({ movie }: MovieDetailClientProps) {
   const [selectedQuality, setSelectedQuality] = useState<MovieQuality>(movie.qualities[0]);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const { watchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
+  const { toast } = useToast();
+
+  const isInWatchlist = watchlist.some((item) => item.id === movie.id);
+
+  const handleToggleWatchlist = () => {
+    if (isInWatchlist) {
+      removeFromWatchlist(movie.id);
+      toast({ title: "Removed from My List", description: `"${movie.title}" has been removed from your list.` });
+    } else {
+      addToWatchlist(movie);
+      toast({ title: "Added to My List", description: `"${movie.title}" has been added to your list.` });
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -32,9 +48,15 @@ export function MovieDetailClient({ movie }: MovieDetailClientProps) {
       </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Watch or Download</CardTitle>
-          <CardDescription>Select your preferred quality.</CardDescription>
+        <CardHeader className="flex-row items-center justify-between">
+            <div>
+                <CardTitle>Watch or Download</CardTitle>
+                <CardDescription>Select your preferred quality.</CardDescription>
+            </div>
+            <Button variant="outline" onClick={handleToggleWatchlist}>
+                {isInWatchlist ? <Check className="mr-2 h-4 w-4" /> : <Plus className="mr-2 h-4 w-4" />}
+                My List
+            </Button>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue={selectedQuality.quality} className="w-full" onValueChange={(value) => {

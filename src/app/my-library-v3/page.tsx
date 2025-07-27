@@ -1,11 +1,15 @@
-import { getMovies, getTVShows } from '@/lib/data';
+'use client';
+import { useWatchlist } from '@/hooks/use-watchlist';
 import type { Movie, TVShow } from '@/lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { Library } from 'lucide-react';
 
 const WatchlistItem = ({ item }: { item: Movie | TVShow }) => {
-    const isMovie = 'duration' in item;
+    const isMovie = item.type === 'movie';
     const href = isMovie ? `/movies/${item.id}` : `/tv-shows/${item.id}`;
     const progress = Math.floor(Math.random() * 80) + 10;
 
@@ -31,44 +35,74 @@ const WatchlistItem = ({ item }: { item: Movie | TVShow }) => {
     )
 }
 
-export default async function MyLibraryV3() {
-  const movies = await getMovies();
-  const tvShows = await getTVShows();
+export default function MyLibraryV3() {
+    const { watchlist, loading } = useWatchlist();
 
-  const continueWatching = [movies[1], tvShows[2], movies[3], tvShows[0]];
-  const myList = [...movies.slice(5, 9), ...tvShows.slice(3, 7)];
+    // For demo purposes, we'll split the list into "Continue Watching" and "My List"
+    const continueWatching = watchlist.slice(0, 4);
+    const myList = watchlist.slice(4);
+
+    const EmptyState = () => (
+        <div className="text-center py-20">
+          <Library className="mx-auto h-16 w-16 text-muted-foreground" />
+          <h3 className="text-2xl font-headline mt-4">Your Library is Waiting</h3>
+          <p className="text-muted-foreground mt-2 mb-6">
+            Add movies and TV shows to your list to see them here.
+          </p>
+          <Button asChild>
+            <Link href="/">Find Something to Watch</Link>
+          </Button>
+        </div>
+      );
 
   return (
     <div className="container py-12 md:py-16">
-        <div className="space-y-12">
-            <section>
-                <h2 className="text-3xl font-headline font-bold mb-6">Continue Watching</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
-                    {continueWatching.map(item => (
-                        <WatchlistItem key={item.id} item={item} />
-                    ))}
-                </div>
-            </section>
-            <section>
-                <h2 className="text-3xl font-headline font-bold mb-6">My List</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
-                    {myList.map(item => {
-                         const isMovie = 'duration' in item;
-                         const href = isMovie ? `/movies/${item.id}` : `/tv-shows/${item.id}`;
-                         return (
-                            <Link key={item.id} href={href} className="block group relative overflow-hidden rounded-lg shadow-lg aspect-[2/3] transition-transform duration-300 ease-in-out hover:scale-105">
-                                <Image
-                                    src={item.poster}
-                                    alt={item.title}
-                                    fill
-                                    className="w-full h-full object-cover"
-                                />
-                            </Link>
-                         )
-                    })}
-                </div>
-            </section>
-        </div>
+        {loading ? (
+             <div className="space-y-12">
+                <section>
+                    <h2 className="text-3xl font-headline font-bold mb-6"><Skeleton className="h-8 w-64" /></h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+                        {Array.from({length: 4}).map((_, i) => <div key={i}><Skeleton className="aspect-[16/9] rounded-xl"/><Skeleton className="h-4 w-1/4 mt-2"/><Skeleton className="h-1.5 w-full mt-1"/></div>)}
+                    </div>
+                </section>
+             </div>
+        ) : watchlist.length === 0 ? (
+            <EmptyState />
+        ) : (
+            <div className="space-y-12">
+                {continueWatching.length > 0 && (
+                    <section>
+                        <h2 className="text-3xl font-headline font-bold mb-6">Continue Watching</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+                            {continueWatching.map(item => (
+                                <WatchlistItem key={item.id} item={item} />
+                            ))}
+                        </div>
+                    </section>
+                )}
+                {myList.length > 0 && (
+                    <section>
+                        <h2 className="text-3xl font-headline font-bold mb-6">My List</h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+                            {myList.map(item => {
+                                 const isMovie = item.type === 'movie';
+                                 const href = isMovie ? `/movies/${item.id}` : `/tv-shows/${item.id}`;
+                                 return (
+                                    <Link key={item.id} href={href} className="block group relative overflow-hidden rounded-lg shadow-lg aspect-[2/3] transition-transform duration-300 ease-in-out hover:scale-105">
+                                        <Image
+                                            src={item.poster}
+                                            alt={item.title}
+                                            fill
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </Link>
+                                 )
+                            })}
+                        </div>
+                    </section>
+                )}
+            </div>
+        )}
     </div>
   );
 }
