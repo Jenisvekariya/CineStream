@@ -1,7 +1,9 @@
+
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const features = [
     { feature: 'Monthly price', basic: '$9.99', standard: '$15.99', premium: '$22.99' },
@@ -13,6 +15,12 @@ const features = [
     { feature: 'Download devices', basic: 1, standard: 2, premium: 6 },
     { feature: 'Ad-free', basic: false, standard: true, premium: true },
 ];
+
+const plans = [
+    { name: 'Basic', price: '$9.99/month' },
+    { name: 'Standard', price: '$15.99/month' },
+    { name: 'Premium', price: '$22.99/month' },
+]
 
 export default function SubscriptionPageV3() {
     return (
@@ -29,21 +37,13 @@ export default function SubscriptionPageV3() {
                     <TableHeader>
                         <TableRow className="hover:bg-transparent">
                             <TableHead className="w-1/3"></TableHead>
-                            <TableHead className="text-center">
-                                <div className="p-4 bg-primary/10 rounded-lg">
-                                    <h3 className="font-bold text-primary text-xl">Basic</h3>
-                                </div>
-                            </TableHead>
-                             <TableHead className="text-center">
-                                <div className="p-4 bg-primary/20 rounded-lg">
-                                    <h3 className="font-bold text-primary text-xl">Standard</h3>
-                                </div>
-                            </TableHead>
-                             <TableHead className="text-center">
-                                <div className="p-4 bg-primary/30 rounded-lg">
-                                    <h3 className="font-bold text-primary text-xl">Premium</h3>
-                                </div>
-                            </TableHead>
+                            {plans.map(plan => (
+                                <TableHead key={plan.name} className="text-center">
+                                    <div className="p-4 bg-primary/10 rounded-lg">
+                                        <h3 className="font-bold text-primary text-xl">{plan.name}</h3>
+                                    </div>
+                                </TableHead>
+                            ))}
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -67,12 +67,18 @@ export default function SubscriptionPageV3() {
                                 </TableCell>
                             </TableRow>
                         ))}
+                         <TableRow className="hover:bg-transparent">
+                            <TableCell></TableCell>
+                            {plans.map(plan => (
+                                <TableCell key={plan.name} className="text-center">
+                                    <Button asChild className="w-full">
+                                        <Link href={`/payment?plan=${plan.name}&price=${encodeURIComponent(plan.price)}`}>Choose Plan</Link>
+                                    </Button>
+                                </TableCell>
+                            ))}
+                        </TableRow>
                     </TableBody>
                 </Table>
-            </div>
-
-            <div className="flex justify-center mt-12">
-                 <Button size="lg" className="text-lg px-10 py-6 rounded-full">Get Started</Button>
             </div>
         </div>
     );

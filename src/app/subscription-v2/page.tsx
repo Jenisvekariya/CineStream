@@ -1,7 +1,9 @@
+
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const plans = [
     {
@@ -15,6 +17,7 @@ const plans = [
     {
         name: 'Standard',
         price: '$15.99',
+        priceSuffix: '/month',
         description: 'All of our content in high definition.',
         features: ['Ad-free', 'Unlimited movies & TV shows', 'High Definition (1080p)', 'Watch on 2 devices'],
         buttonText: 'Upgrade to Standard',
@@ -24,6 +27,7 @@ const plans = [
     {
         name: 'Premium',
         price: '$22.99',
+        priceSuffix: '/month',
         description: 'The ultimate streaming experience.',
         features: ['Everything in Standard', 'Ultra HD (4K) & HDR', 'Spatial Audio', 'Watch on 4 devices', 'Download on 6 devices'],
         buttonText: 'Go Premium',
@@ -47,7 +51,7 @@ export default function SubscriptionPageV2() {
                 <Card key={plan.name} className={cn('flex flex-col', index === 1 && 'border-primary shadow-2xl shadow-primary/20 scale-105')}>
                     <CardHeader>
                         <CardTitle className="text-2xl font-headline text-primary">{plan.name}</CardTitle>
-                        <p className="text-4xl font-bold">{plan.price}<span className="text-base font-normal text-muted-foreground">/month</span></p>
+                        <p className="text-4xl font-bold">{plan.price}<span className="text-base font-normal text-muted-foreground">{plan.priceSuffix}</span></p>
                         <CardDescription>{plan.description}</CardDescription>
                     </CardHeader>
                     <CardContent className="flex-grow">
@@ -61,7 +65,11 @@ export default function SubscriptionPageV2() {
                         </ul>
                     </CardContent>
                     <CardFooter>
-                        <Button size="lg" className={cn('w-full', plan.variant === 'secondary' && 'bg-secondary text-secondary-foreground hover:bg-secondary/80')}>{plan.buttonText}</Button>
+                        <Button asChild size="lg" className={cn('w-full', plan.variant === 'secondary' && 'bg-secondary text-secondary-foreground hover:bg-secondary/80')}>
+                            <Link href={plan.name === 'Free' ? '/' : `/payment?plan=${plan.name}&price=${encodeURIComponent(plan.price + (plan.priceSuffix || ''))}`}>
+                                {plan.buttonText}
+                            </Link>
+                        </Button>
                     </CardFooter>
                 </Card>
             ))}

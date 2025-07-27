@@ -10,6 +10,7 @@ import { Check, Zap, Crown, Film } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
 const plans = {
   monthly: [
@@ -148,8 +149,8 @@ export default function SubscriptionPageV1() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className={cn('w-full', !plan.isPopular && 'bg-secondary text-secondary-foreground hover:bg-secondary/80')} size="lg">
-                Choose Plan
+              <Button asChild className={cn('w-full', !plan.isPopular && 'bg-secondary text-secondary-foreground hover:bg-secondary/80')} size="lg">
+                <Link href={`/payment?plan=${plan.name}&price=${encodeURIComponent(plan.price + plan.period)}`}>Choose Plan</Link>
               </Button>
             </CardFooter>
           </Card>
