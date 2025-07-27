@@ -34,7 +34,9 @@ const pageLinks = {
     { href: '/tv-shows-v3', title: 'TV Shows V3' },
   ],
   movies: [
-      { href: '/search', title: 'All Movies' },
+      { href: '/movies-v1', title: 'Movies V1 (Filters)' },
+      { href: '/movies-v2', title: 'Movies V2 (Gallery)' },
+      { href: '/movies-v3', title: 'Movies V3 (List)' },
   ],
   subscription: [
     { href: '/subscription-v1', title: 'Subscription V1' },
@@ -115,7 +117,7 @@ export function Header() {
     return (
       <>
         <Link href="/" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Home</Button></Link>
-        <Link href="/search" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Movies</Button></Link>
+        <Link href="/movies-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Movies</Button></Link>
         <Link href="/tv-shows-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>TV Shows</Button></Link>
         <Link href="/subscription-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Subscription</Button></Link>
         <Link href="/my-library-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>My Library</Button></Link>
