@@ -1,9 +1,10 @@
 
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -103,6 +104,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [trendingMovie, setTrendingMovie] = useState<Movie | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     async function fetchData() {
@@ -127,11 +129,11 @@ export function Header() {
     
     return (
       <>
-        <Link href="/" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Home</Button></Link>
-        <Link href="/movies-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Movies</Button></Link>
-        <Link href="/tv-shows-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>TV Shows</Button></Link>
-        <Link href="/subscription-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>Subscription</Button></Link>
-        <Link href="/my-library-v1" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"><Button variant="ghost" className={commonLinkClass}>My Library</Button></Link>
+        <Button variant="ghost" className={cn(commonLinkClass, pathname === '/' && 'bg-muted')} asChild><Link href="/">Home</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/movies') && 'bg-muted')} asChild><Link href="/movies-v1">Movies</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/tv-shows') && 'bg-muted')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/subscription') && 'bg-muted')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/my-library') && 'bg-muted')} asChild><Link href="/my-library-v1">My Library</Link></Button>
         
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
