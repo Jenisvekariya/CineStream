@@ -5,11 +5,11 @@ const menuItems = [
     {
         title: "Account",
         items: [
-            { href: "/profile", label: "Membership & Billing", icon: User },
-            { href: "#", label: "Security & Privacy", icon: Shield },
+            { href: "/manage-subscription", label: "Membership & Billing", icon: User },
+            { href: "/profile", label: "Security & Privacy", icon: Shield },
             { href: "/payment-methods", label: "Payment Methods", icon: CreditCard },
-            { href: "#", label: "Notification Settings", icon: Bell },
-            { href: "#", label: "Help & Support", icon: HelpCircle },
+            { href: "/notification-settings", label: "Notification Settings", icon: Bell },
+            { href: "/faq-v1", label: "Help & Support", icon: HelpCircle },
         ]
     }
 ];
