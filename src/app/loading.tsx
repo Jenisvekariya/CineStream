@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -11,7 +12,7 @@ export default function Loading() {
     // This timer ensures the loader is visible for a minimum duration, preventing flashes on fast loads.
     const timer = setTimeout(() => {
       setIsHiding(true);
-    }, 1500); // Enforce a 1.5-second minimum display time for the animation to be perceived.
+    }, 4000); // Enforce a 4-second minimum display time for the animation to be perceived.
 
     return () => clearTimeout(timer);
   }, []);
