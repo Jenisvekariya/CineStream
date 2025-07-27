@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building, LayoutDashboard } from 'lucide-react';
@@ -105,21 +105,50 @@ export function Header() {
   const [trendingMovie, setTrendingMovie] = useState<Movie | null>(null);
   const router = useRouter();
   const pathname = usePathname();
+  
+  const [allMovies, setAllMovies] = useState<Movie[]>([]);
+  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     async function fetchData() {
       const moviesData = await getMovies();
       const sortedMovies = [...moviesData].sort((a,b) => b.rating - a.rating);
       setTrendingMovie(sortedMovies[0]);
+      setAllMovies(moviesData);
     }
     fetchData();
   }, []);
+  
+  useEffect(() => {
+    if (searchQuery.trim().length > 1) {
+      const results = allMovies
+        .filter(movie => movie.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        .slice(0, 5); // Limit to 5 results
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery, allMovies]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsSearchFocused(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [searchContainerRef]);
 
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
+      setIsSearchFocused(false);
     }
   };
 
@@ -128,17 +157,21 @@ export function Header() {
     const closeMenu = () => isMobile && setIsMobileMenuOpen(false);
     
     const checkActive = (href: string) => {
-        if (href === '/') return pathname === href;
+        if (href === '/') return pathname === href || ['/homepage-v2', '/homepage-v3', '/homepage-v4'].includes(pathname);
+        if(href.includes('-v1')) {
+            const base = href.split('-v1')[0];
+            return pathname.startsWith(base);
+        }
         return pathname.startsWith(href);
     }
     
     return (
       <>
         <Button variant="ghost" className={cn(commonLinkClass, checkActive('/') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/">Home</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/movies') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/movies-v1">Movies</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/tv-shows') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/subscription') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/my-library') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/my-library-v1">My Library</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/movies-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/movies-v1">Movies</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/tv-shows-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/subscription-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/my-library-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/my-library-v1">My Library</Link></Button>
         
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -239,19 +272,40 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden sm:block">
-            <form onSubmit={handleSearchSubmit} className="relative">
+          <div ref={searchContainerRef} className="hidden sm:block relative">
+            <form onSubmit={handleSearchSubmit}>
               <Input
                 type="search"
                 placeholder="Search..."
                 className="h-9 w-40 lg:w-64 pr-10"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
               />
               <Button type="submit" variant="ghost" size="icon" className="absolute right-0 top-0 h-9 w-9">
                 <Search className="h-4 w-4" />
               </Button>
             </form>
+            {isSearchFocused && searchResults.length > 0 && (
+              <div className="absolute top-full mt-2 w-full lg:w-96 max-h-96 overflow-y-auto rounded-md bg-card border shadow-lg z-50">
+                <ul>
+                  {searchResults.map(movie => (
+                    <li key={movie.id}>
+                      <Link href={`/movies/${movie.id}`} className="flex items-center gap-4 p-2 hover:bg-muted" onClick={() => {
+                          setSearchQuery('');
+                          setIsSearchFocused(false);
+                      }}>
+                        <Image src={movie.poster} alt={movie.title} width={40} height={60} className="rounded-sm object-cover" />
+                        <div className="flex-grow">
+                          <p className="font-semibold text-sm text-foreground">{movie.title}</p>
+                          <p className="text-xs text-muted-foreground">{movie.year}</p>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <DropdownMenu>
