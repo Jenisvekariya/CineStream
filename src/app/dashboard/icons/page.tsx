@@ -56,11 +56,11 @@ export default function DashboardIconsPage() {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {iconList.map(({name, component: Icon}) => (
+        {iconList.map(({name, component: IconComponent}) => (
             <Card key={name}>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-4">
-                        <Icon className="w-8 h-8 text-primary" />
+                        <IconComponent className="w-8 h-8 text-primary" />
                         <span>{name}</span>
                     </CardTitle>
                 </CardHeader>
