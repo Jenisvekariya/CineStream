@@ -22,9 +22,9 @@ type Event = {
 };
 
 const initialEvents: Event[] = [
-    { id: '1', date: new Date(), title: 'Cyber Runners Premiere' },
-    { id: '2', date: addDays(new Date(), 4), title: 'Sci-Fi Marathon' },
-    { id: '3', date: addDays(new Date(), 10), title: 'Q&A with Cosmic Odyssey Director' },
+    { id: crypto.randomUUID(), date: new Date(), title: 'Cyber Runners Premiere' },
+    { id: crypto.randomUUID(), date: addDays(new Date(), 4), title: 'Sci-Fi Marathon' },
+    { id: crypto.randomUUID(), date: addDays(new Date(), 10), title: 'Q&A with Cosmic Odyssey Director' },
 ];
 
 export function Calendar() {
