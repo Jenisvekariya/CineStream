@@ -21,6 +21,7 @@ import { getMovies } from '@/lib/data';
 import type { Movie } from '@/lib/types';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const pageLinks = {
   home: [
@@ -90,6 +91,8 @@ const pageCategories = [
     { title: "TV Shows", icon: Tv, links: pageLinks.shows },
     { title: "Subscription", icon: Sparkles, links: pageLinks.subscription },
     { title: "My Library", icon: Library, links: pageLinks.library },
+    { title: "Company", icon: Building, links: pageLinks.company },
+    { title: "Dashboard", icon: LayoutDashboard, links: pageLinks.dashboard },
 ]
 
 const authCategories = [
@@ -152,30 +155,29 @@ export function Header() {
     }
   };
 
-  const NavItems = ({ isMobile = false }: { isMobile?: boolean }) => {
-    const commonLinkClass = isMobile ? "w-full justify-start text-base" : "";
-    const closeMenu = () => isMobile && setIsMobileMenuOpen(false);
-    
-    const checkActive = (href: string) => {
-        if (href === '/') return pathname === href || ['/homepage-v2', '/homepage-v3', '/homepage-v4'].includes(pathname);
-        if(href.includes('-v1')) {
-            const base = href.split('-v1')[0];
-            return pathname.startsWith(base);
-        }
-        return pathname.startsWith(href);
-    }
-    
-    return (
+  const checkActive = (href: string) => {
+      if (href === '/') return pathname === href || ['/homepage-v2', '/homepage-v3', '/homepage-v4'].includes(pathname);
+      if(href.includes('-v1')) {
+          const base = href.split('-v1')[0];
+          return pathname.startsWith(base);
+      }
+      return pathname.startsWith(href);
+  }
+
+  const NavItems = () => (
       <>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/">Home</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/movies-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/movies-v1">Movies</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/tv-shows-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/subscription-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/my-library-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/my-library-v1">My Library</Link></Button>
-        
-        <DropdownMenu>
+        <Button variant="ghost" className={cn(checkActive('/') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/">Home</Link></Button>
+        <Button variant="ghost" className={cn(checkActive('/movies-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/movies-v1">Movies</Link></Button>
+        <Button variant="ghost" className={cn(checkActive('/tv-shows-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
+        <Button variant="ghost" className={cn(checkActive('/subscription-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
+        <Button variant="ghost" className={cn(checkActive('/my-library-v1') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/my-library-v1">My Library</Link></Button>
+      </>
+  );
+
+  const MegaMenu = () => (
+      <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
+                <Button variant="ghost" className="hidden lg:flex items-center gap-1">
                     Pages <ChevronDown className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
@@ -209,7 +211,7 @@ export function Header() {
                            ))}
                         </div>
                          <div className="space-y-6">
-                            {pageCategories.slice(3).map(category => (
+                            {pageCategories.slice(3, 6).map(category => (
                                 <div key={category.title}>
                                      <div className="flex items-center gap-2 mb-2">
                                         <category.icon className="w-5 h-5 text-primary"/>
@@ -220,28 +222,25 @@ export function Header() {
                                     </ul>
                                 </div>
                            ))}
-                             <div className="flex items-center gap-2 mb-2">
-                                <Building className="w-5 h-5 text-primary"/>
-                                <h4 className="font-headline font-semibold">Company</h4>
-                            </div>
-                            <ul className="text-sm space-y-1.5">
-                                {pageLinks.company.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
-                            </ul>
-                            <div className="flex items-center gap-2 mb-2">
-                                <LayoutDashboard className="w-5 h-5 text-primary"/>
-                                <h4 className="font-headline font-semibold">Dashboard</h4>
-                            </div>
-                            <ul className="text-sm space-y-1.5">
-                                {pageLinks.dashboard.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
-                            </ul>
                         </div>
                         <div className="space-y-6">
+                            {pageCategories.slice(6).map(category => (
+                                <div key={category.title}>
+                                        <div className="flex items-center gap-2 mb-2">
+                                        <category.icon className="w-5 h-5 text-primary"/>
+                                        <h4 className="font-headline font-semibold">{category.title}</h4>
+                                    </div>
+                                    <ul className="text-sm space-y-1.5">
+                                        {category.links.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                                    </ul>
+                                </div>
+                            ))}
                              <div className="flex items-center gap-2 mb-2">
                                 <Lock className="w-5 h-5 text-primary"/>
                                 <h4 className="font-headline font-semibold">Authentication</h4>
                             </div>
                             {authCategories.map(category => (
-                                <div key={category.title}>
+                                <div key={category.title} className="pl-4">
                                     <h5 className="font-semibold text-sm text-foreground/80 mb-1.5">{category.title}</h5>
                                     <ul className="text-sm space-y-1.5">
                                         {category.links.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
@@ -253,10 +252,52 @@ export function Header() {
                 </div>
             </DropdownMenuContent>
         </DropdownMenu>
-      </>
-    );
-  }
+  );
 
+  const MobileNav = () => (
+      <Accordion type="multiple" className="w-full">
+          {pageCategories.map(category => (
+              <AccordionItem value={category.title} key={category.title}>
+                  <AccordionTrigger>
+                      <div className="flex items-center gap-2">
+                          <category.icon className="w-5 h-5 text-primary" />
+                          <span>{category.title}</span>
+                      </div>
+                  </AccordionTrigger>
+                  <AccordionContent>
+                      <div className="flex flex-col items-start pl-8 space-y-2">
+                        {category.links.map(link => (
+                           <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{link.title}</Link>
+                        ))}
+                      </div>
+                  </AccordionContent>
+              </AccordionItem>
+          ))}
+          <AccordionItem value="Authentication">
+              <AccordionTrigger>
+                  <div className="flex items-center gap-2">
+                      <Lock className="w-5 h-5 text-primary" />
+                      <span>Authentication</span>
+                  </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                  {authCategories.map(category => (
+                      <div key={category.title} className="pt-4">
+                           <h5 className="font-semibold text-sm text-foreground/80 mb-2 flex items-center gap-2 pl-4">
+                                <category.icon className="w-4 h-4" />
+                                {category.title}
+                            </h5>
+                          <div className="flex flex-col items-start pl-10 space-y-2">
+                            {category.links.map(link => (
+                               <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>{link.title}</Link>
+                            ))}
+                          </div>
+                      </div>
+                  ))}
+              </AccordionContent>
+          </AccordionItem>
+      </Accordion>
+  )
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -268,6 +309,7 @@ export function Header() {
           </Link>
           <nav className="hidden lg:flex items-center gap-1">
             <NavItems />
+            <MegaMenu />
           </nav>
         </div>
 
@@ -344,10 +386,8 @@ export function Header() {
                       </Button>
                    </div>
                 </SheetHeader>
-                <div className="flex flex-col h-full p-4">
-                  <nav className="flex flex-col gap-1">
-                    <NavItems isMobile />
-                  </nav>
+                <div className="flex flex-col h-full p-4 overflow-y-auto">
+                    <MobileNav />
                 </div>
             </SheetContent>
           </Sheet>
