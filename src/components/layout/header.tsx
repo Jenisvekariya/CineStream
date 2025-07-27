@@ -5,7 +5,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building, LayoutDashboard } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building, LayoutDashboard, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -58,6 +58,9 @@ const pageLinks = {
       { href: '/faq-v1', title: 'FAQ V1' },
       { href: '/faq-v2', title: 'FAQ V2' },
   ],
+  events: [
+    { href: '/events', title: 'Events Calendar' }
+  ],
   auth: {
     login: [
         { href: '/login-v1', title: 'Login V1' },
@@ -92,6 +95,7 @@ const pageCategories = [
     { title: "Subscription", icon: Sparkles, links: pageLinks.subscription },
     { title: "My Library", icon: Library, links: pageLinks.library },
     { title: "Company", icon: Building, links: pageLinks.company },
+    { title: "Events", icon: Calendar, links: pageLinks.events },
     { title: "Dashboard", icon: LayoutDashboard, links: pageLinks.dashboard },
 ]
 
