@@ -114,9 +114,9 @@ export function Header() {
                     Pages <ChevronDown className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-[500px] h-[450px] p-0">
+            <DropdownMenuContent className="w-[700px] h-[450px] p-0">
                 <div className="flex h-full">
-                    <div className="w-1/2 relative rounded-l-md overflow-hidden">
+                    <div className="w-1/3 relative rounded-l-md overflow-hidden">
                         {trendingMovie && (
                             <>
                                 <Image src={trendingMovie.poster} alt={trendingMovie.title} fill className="object-cover" />
@@ -128,23 +128,33 @@ export function Header() {
                             </>
                         )}
                     </div>
-                    <div className="w-1/2 p-4 flex flex-col justify-around">
-                         <div>
+                    <div className="w-2/3 p-4 flex justify-around">
+                         <div className="flex flex-col gap-4">
                             <h4 className="font-headline font-semibold mb-2">Home</h4>
                             <ul className="text-sm space-y-1">
                                 {pageLinks.home.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
                             </ul>
+                            <h4 className="font-headline font-semibold mb-2 mt-4">Subscription</h4>
+                            <ul className="text-sm space-y-1">
+                                {pageLinks.subscription.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
+                            </ul>
                         </div>
-                         <div>
+                         <div className="flex flex-col gap-4">
                             <h4 className="font-headline font-semibold mb-2">TV Shows</h4>
                             <ul className="text-sm space-y-1">
                                  {pageLinks.shows.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
                             </ul>
+                            <h4 className="font-headline font-semibold mb-2 mt-4">My Library</h4>
+                             <ul className="text-sm space-y-1">
+                                 {pageLinks.library.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
+                            </ul>
                         </div>
-                         <div>
-                            <h4 className="font-headline font-semibold mb-2">Subscription</h4>
+                        <div className="flex flex-col gap-4">
+                           <h4 className="font-headline font-semibold mb-2">Auth Pages</h4>
                             <ul className="text-sm space-y-1">
-                                {pageLinks.subscription.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
+                                {authLinks.login.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
+                                <li className="pt-2"><DropdownMenuSeparator /></li>
+                                {authLinks.signup.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
                             </ul>
                         </div>
                     </div>
@@ -254,5 +264,7 @@ export function Header() {
     </header>
   );
 }
+
+    
 
     
