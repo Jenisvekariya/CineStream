@@ -21,15 +21,19 @@ type Event = {
     title: string;
 };
 
-const initialEvents: Event[] = [
-    { id: 'event-1', date: new Date(), title: 'Cyber Runners Premiere' },
-    { id: 'event-2', date: addDays(new Date(), 4), title: 'Sci-Fi Marathon' },
-    { id: 'event-3', date: addDays(new Date(), 10), title: 'Q&A with Cosmic Odyssey Director' },
-];
+const createInitialEvents = (): Event[] => {
+    const today = startOfToday();
+    return [
+        { id: 'event-1', date: today, title: 'Cyber Runners Premiere' },
+        { id: 'event-2', date: addDays(today, 4), title: 'Sci-Fi Marathon' },
+        { id: 'event-3', date: addDays(today, 10), title: 'Q&A with Cosmic Odyssey Director' },
+    ];
+};
+
 
 export function Calendar() {
     const { toast } = useToast();
-    const [events, setEvents] = useState<Event[]>(initialEvents);
+    const [events, setEvents] = useState<Event[]>(createInitialEvents);
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [newEventTitle, setNewEventTitle] = useState('');
     const [editingEvent, setEditingEvent] = useState<Event | null>(null);
