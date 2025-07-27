@@ -29,7 +29,7 @@ export default function AccountPage() {
                                         <h2 className="font-semibold text-lg mb-2 text-muted-foreground">{group.title}</h2>
                                         <ul className="space-y-1">
                                             {group.items.map((item) => (
-                                                <li key={item.href}>
+                                                <li key={item.label}>
                                                     <Link href={item.href} className="flex items-center gap-3 px-3 py-2 rounded-md text-foreground hover:bg-muted transition-colors">
                                                         <item.icon className="w-5 h-5 text-muted-foreground" />
                                                         <span>{item.label}</span>
