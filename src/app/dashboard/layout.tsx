@@ -7,15 +7,17 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <SidebarProvider>
-      <Sidebar>
-        <DashboardSidebar />
-      </Sidebar>
-      <SidebarInset>
-        <div className="p-4 md:p-8 mt-16">
-            {children}
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <main>
+      <SidebarProvider>
+        <Sidebar>
+          <DashboardSidebar />
+        </Sidebar>
+        <SidebarInset>
+          <div className="p-4 md:p-8 mt-16">
+              {children}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </main>
   )
 }

@@ -68,13 +68,16 @@ export default function RootLayout({
           <Suspense>
             <TopLoader />
           </Suspense>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <div className="flex-grow">
+                {children}
+            </div>
+            <Footer />
+          </div>
           <Toaster />
           <ThemeCustomizer />
         </ThemeProvider>
       </body>
     </html>
   );
-}
