@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -77,7 +77,10 @@ const pageLinks = {
         { href: '/otp-v2', title: 'OTP V2' },
         { href: '/otp-v3', title: 'OTP V3' },
     ]
-  }
+  },
+  dashboard: [
+    { href: '/dashboard', title: 'UI Dashboard' }
+  ]
 };
 
 const pageCategories = [
@@ -183,6 +186,13 @@ export function Header() {
                             </div>
                             <ul className="text-sm space-y-1.5">
                                 {pageLinks.company.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                            </ul>
+                            <div className="flex items-center gap-2 mb-2">
+                                <LayoutDashboard className="w-5 h-5 text-primary"/>
+                                <h4 className="font-headline font-semibold">Dashboard</h4>
+                            </div>
+                            <ul className="text-sm space-y-1.5">
+                                {pageLinks.dashboard.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
                             </ul>
                         </div>
                         <div className="space-y-6">
