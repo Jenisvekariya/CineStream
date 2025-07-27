@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library, Building } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -28,15 +28,15 @@ const pageLinks = {
     { href: '/homepage-v3', title: 'Home V3' },
     { href: '/homepage-v4', title: 'Home V4' },
   ],
-  shows: [
-    { href: '/tv-shows-v1', title: 'TV Shows V1' },
-    { href: '/tv-shows-v2', title: 'TV Shows V2' },
-    { href: '/tv-shows-v3', title: 'TV Shows V3' },
-  ],
   movies: [
       { href: '/movies-v1', title: 'Movies V1 (Filters)' },
       { href: '/movies-v2', title: 'Movies V2 (Gallery)' },
       { href: '/movies-v3', title: 'Movies V3 (List)' },
+  ],
+  shows: [
+    { href: '/tv-shows-v1', title: 'TV Shows V1' },
+    { href: '/tv-shows-v2', title: 'TV Shows V2' },
+    { href: '/tv-shows-v3', title: 'TV Shows V3' },
   ],
   subscription: [
     { href: '/subscription-v1', title: 'Subscription V1' },
@@ -47,6 +47,14 @@ const pageLinks = {
       { href: '/my-library-v1', title: 'My Library V1' },
       { href: '/my-library-v2', title: 'My Library V2' },
       { href: '/my-library-v3', title: 'My Library V3' },
+  ],
+  company: [
+      { href: '/about-v1', title: 'About V1' },
+      { href: '/about-v2', title: 'About V2' },
+      { href: '/contact-v1', title: 'Contact V1' },
+      { href: '/contact-v2', title: 'Contact V2' },
+      { href: '/faq-v1', title: 'FAQ V1' },
+      { href: '/faq-v2', title: 'FAQ V2' },
   ],
   auth: {
     login: [
@@ -128,9 +136,9 @@ export function Header() {
                     Pages <ChevronDown className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-screen max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-5rem)] lg:max-w-[1200px] p-0" align="start">
+            <DropdownMenuContent className="w-screen max-w-full p-0" align="start">
                 <div className="flex">
-                    <div className="w-1/3 relative rounded-l-md overflow-hidden hidden lg:block">
+                    <div className="w-1/4 relative rounded-l-md overflow-hidden hidden lg:block">
                         {trendingMovie && (
                             <>
                                 <Image src={trendingMovie.poster} alt={trendingMovie.title} fill className="object-cover" />
@@ -138,12 +146,12 @@ export function Header() {
                                 <div className="absolute bottom-0 left-0 p-6 text-white">
                                     <h3 className="font-bold text-xl font-headline">{trendingMovie.title}</h3>
                                     <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{trendingMovie.description}</p>
-                                    <Button variant="secondary" size="sm" className="mt-4">Watch Now</Button>
+                                    <Button asChild variant="secondary" size="sm" className="mt-4"><Link href={`/movies/${trendingMovie.id}`}>Watch Now</Link></Button>
                                 </div>
                             </>
                         )}
                     </div>
-                    <div className="w-full lg:w-2/3 p-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div className="w-full lg:w-3/4 p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
                         <div className="space-y-6">
                            {pageCategories.slice(0, 3).map(category => (
                                 <div key={category.title}>
@@ -169,6 +177,13 @@ export function Header() {
                                     </ul>
                                 </div>
                            ))}
+                             <div className="flex items-center gap-2 mb-2">
+                                <Building className="w-5 h-5 text-primary"/>
+                                <h4 className="font-headline font-semibold">Company</h4>
+                            </div>
+                            <ul className="text-sm space-y-1.5">
+                                {pageLinks.company.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                            </ul>
                         </div>
                         <div className="space-y-6">
                              <div className="flex items-center gap-2 mb-2">
