@@ -6,6 +6,10 @@ import { Star, Calendar, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { MovieRow } from '@/components/movie-row';
 import { getMovies } from '@/lib/data';
+import { StatsBar } from '@/components/stats-bar';
+import { Separator } from '@/components/ui/separator';
+import { ReviewsSection } from '@/components/reviews-section';
+import { CommentsSection } from '@/components/comments-section';
 
 type MovieDetailPageProps = {
   params: {
@@ -82,13 +86,18 @@ export default async function MovieDetailPage({ params }: MovieDetailPageProps) 
                 <Badge key={genre} variant="secondary">{genre}</Badge>
               ))}
             </div>
-            
+             <StatsBar views={movie.views} initialLikes={movie.likes} initialDislikes={movie.dislikes} />
             <MovieDetailClient movie={movie} />
 
           </div>
         </div>
       </div>
       
+       <div className="container space-y-12 py-10">
+        <ReviewsSection initialReviews={movie.reviews} averageRating={movie.rating} />
+        <CommentsSection initialComments={movie.comments} />
+      </div>
+
       <div className="py-10">
         <MovieRow title="Related Movies" movies={relatedMovies} />
       </div>

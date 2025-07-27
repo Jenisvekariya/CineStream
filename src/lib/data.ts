@@ -1,4 +1,15 @@
-import type { Movie, TVShow } from './types';
+import type { Movie, TVShow, Review, Comment } from './types';
+
+const genericReviews: Review[] = [
+    { id: '1', author: 'CinemaFan', avatarUrl: 'https://placehold.co/40x40.png', date: '2 days ago', rating: 8, title: 'A must-watch!', text: 'Absolutely loved the cinematography and the compelling storyline. The actors were brilliant.' },
+    { id: '2', author: 'MovieCritic', avatarUrl: 'https://placehold.co/40x40.png', date: '1 week ago', rating: 6, title: 'Good, but not great.', text: 'An enjoyable movie with some great moments, but the plot felt a bit predictable at times.' },
+];
+
+const genericComments: Comment[] = [
+    { id: '1', author: 'User123', avatarUrl: 'https://placehold.co/40x40.png', date: '5 hours ago', text: 'That twist at the end was insane! Did not see that coming.' },
+    { id: '2', author: 'BingeWatcher', avatarUrl: 'https://placehold.co/40x40.png', date: '1 day ago', text: 'Can anyone recommend something similar? I need more movies like this in my life.' },
+];
+
 
 const movies: Movie[] = [
   {
@@ -19,6 +30,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1250345,
+    likes: 45231,
+    dislikes: 1023,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'echoes-of-the-past',
@@ -37,6 +53,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 890123,
+    likes: 21098,
+    dislikes: 876,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'cyber-runners',
@@ -55,6 +76,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 2103456,
+    likes: 55123,
+    dislikes: 2456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-last-laugh',
@@ -73,6 +99,11 @@ const movies: Movie[] = [
     ],
     isFree: true,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 543098,
+    likes: 12345,
+    dislikes: 987,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'beneath-the-surface',
@@ -90,6 +121,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 789456,
+    likes: 15678,
+    dislikes: 3456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'path-of-the-samurai',
@@ -108,6 +144,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1567890,
+    likes: 48901,
+    dislikes: 1234,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'love-in-paris',
@@ -126,6 +167,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 987654,
+    likes: 34567,
+    dislikes: 1543,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-heist-of-the-century',
@@ -144,6 +190,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1876543,
+    likes: 51234,
+    dislikes: 2345,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'galaxy-guardians',
@@ -162,6 +213,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 2345678,
+    likes: 65432,
+    dislikes: 3456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'whimsical-woods',
@@ -180,6 +236,11 @@ const movies: Movie[] = [
     ],
     isFree: true,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 456789,
+    likes: 12345,
+    dislikes: 678,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'zero-day',
@@ -198,6 +259,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1122334,
+    likes: 33445,
+    dislikes: 1890,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'a-simple-melody',
@@ -216,6 +282,11 @@ const movies: Movie[] = [
     ],
     isFree: false,
     trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 654321,
+    likes: 23456,
+    dislikes: 789,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'chronicles-of-narnia',
@@ -232,7 +303,12 @@ const movies: Movie[] = [
       { quality: '1080p', price: 6.99, downloadLink: '#', streamLink: '#', fileSize: '2.8 GB' }
     ],
     isFree: true,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 3456789,
+    likes: 78901,
+    dislikes: 4567,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'interstellar-echo',
@@ -249,7 +325,12 @@ const movies: Movie[] = [
       { quality: '4K', price: 19.99, downloadLink: '#', streamLink: '#', fileSize: '11.0 GB' }
     ],
     isFree: false,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 4567890,
+    likes: 89012,
+    dislikes: 5678,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-last-heir',
@@ -266,7 +347,12 @@ const movies: Movie[] = [
       { quality: '4K', price: 17.99, downloadLink: '#', streamLink: '#', fileSize: '9.5 GB' }
     ],
     isFree: false,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1234567,
+    likes: 45678,
+    dislikes: 2345,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'midnight-motel',
@@ -283,7 +369,12 @@ const movies: Movie[] = [
       { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '2.4 GB' }
     ],
     isFree: false,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 876543,
+    likes: 23456,
+    dislikes: 1234,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-art-of-war',
@@ -300,7 +391,12 @@ const movies: Movie[] = [
       { quality: '4K', price: 18.99, downloadLink: '#', streamLink: '#', fileSize: '12.0 GB' }
     ],
     isFree: false,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 1357911,
+    likes: 47890,
+    dislikes: 2109,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'city-of-dreams',
@@ -316,7 +412,12 @@ const movies: Movie[] = [
       { quality: '1080p', price: 8.99, downloadLink: '#', streamLink: '#', fileSize: '3.1 GB' }
     ],
     isFree: false,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 999888,
+    likes: 33322,
+    dislikes: 1110,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
       id: 'movie-1',
@@ -333,7 +434,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 123456,
+      likes: 1234,
+      dislikes: 123,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-2',
@@ -350,7 +456,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 234567,
+      likes: 2345,
+      dislikes: 234,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-3',
@@ -367,7 +478,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 345678,
+      likes: 3456,
+      dislikes: 345,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
     id: 'movie-4',
@@ -384,7 +500,12 @@ const movies: Movie[] = [
         { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
     ],
     isFree: true,
-    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    views: 456789,
+    likes: 4567,
+    dislikes: 456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
       id: 'movie-5',
@@ -401,7 +522,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 567890,
+      likes: 5678,
+      dislikes: 567,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-6',
@@ -418,7 +544,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 678901,
+      likes: 6789,
+      dislikes: 678,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-7',
@@ -435,7 +566,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 789012,
+      likes: 7890,
+      dislikes: 789,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-8',
@@ -452,7 +588,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: true,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 890123,
+      likes: 8901,
+      dislikes: 890,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-9',
@@ -469,7 +610,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 901234,
+      likes: 9012,
+      dislikes: 901,
+      reviews: genericReviews,
+      comments: genericComments,
   },
   {
       id: 'movie-10',
@@ -486,7 +632,12 @@ const movies: Movie[] = [
           { quality: '1080p', price: 7.99, downloadLink: '#', streamLink: '#', fileSize: '3.0 GB' }
       ],
       isFree: false,
-      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      trailerUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      views: 1012345,
+      likes: 10123,
+      dislikes: 1012,
+      reviews: genericReviews,
+      comments: genericComments,
   }
 ];
 
@@ -521,6 +672,11 @@ const tvShows: TVShow[] = [
     rating: 9.2,
     seasons: 3,
     isFree: false,
+    views: 5678901,
+    likes: 123456,
+    dislikes: 7890,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'silicon-valley-tales',
@@ -533,6 +689,11 @@ const tvShows: TVShow[] = [
     rating: 8.5,
     seasons: 5,
     isFree: true,
+    views: 3456789,
+    likes: 89012,
+    dislikes: 4567,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'chronos-detective',
@@ -545,6 +706,11 @@ const tvShows: TVShow[] = [
     rating: 8.8,
     seasons: 2,
     isFree: false,
+    views: 2345678,
+    likes: 67890,
+    dislikes: 3456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-last-colony',
@@ -557,6 +723,11 @@ const tvShows: TVShow[] = [
     rating: 8.1,
     seasons: 1,
     isFree: false,
+    views: 1234567,
+    likes: 45678,
+    dislikes: 2345,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'culinary-kings',
@@ -569,6 +740,11 @@ const tvShows: TVShow[] = [
     rating: 7.9,
     seasons: 6,
     isFree: true,
+    views: 4567890,
+    likes: 90123,
+    dislikes: 5678,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'haunting-hill-house',
@@ -581,6 +757,11 @@ const tvShows: TVShow[] = [
     rating: 8.6,
     seasons: 1,
     isFree: false,
+    views: 6789012,
+    likes: 234567,
+    dislikes: 8901,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-crown-and-the-scepter',
@@ -593,6 +774,11 @@ const tvShows: TVShow[] = [
     rating: 8.7,
     seasons: 5,
     isFree: false,
+    views: 7890123,
+    likes: 345678,
+    dislikes: 9012,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'planet-earth-revealed',
@@ -605,6 +791,11 @@ const tvShows: TVShow[] = [
     rating: 9.5,
     seasons: 1,
     isFree: true,
+    views: 8901234,
+    likes: 456789,
+    dislikes: 1234,
+    reviews: genericReviews,
+    comments: genericComments,
   },
    {
     id: 'stranger-signals',
@@ -617,6 +808,11 @@ const tvShows: TVShow[] = [
     rating: 8.7,
     seasons: 4,
     isFree: false,
+    views: 9012345,
+    likes: 567890,
+    dislikes: 12345,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-office-us',
@@ -629,6 +825,11 @@ const tvShows: TVShow[] = [
     rating: 8.9,
     seasons: 9,
     isFree: true,
+    views: 10123456,
+    likes: 678901,
+    dislikes: 23456,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'breaking-badly',
@@ -641,6 +842,11 @@ const tvShows: TVShow[] = [
     rating: 9.5,
     seasons: 5,
     isFree: false,
+    views: 11234567,
+    likes: 789012,
+    dislikes: 34567,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'sherlock-holmes-modern',
@@ -653,6 +859,11 @@ const tvShows: TVShow[] = [
     rating: 9.1,
     seasons: 4,
     isFree: false,
+    views: 12345678,
+    likes: 890123,
+    dislikes: 45678,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-people-vs-oj',
@@ -665,6 +876,11 @@ const tvShows: TVShow[] = [
     rating: 8.4,
     seasons: 1,
     isFree: false,
+    views: 13456789,
+    likes: 901234,
+    dislikes: 56789,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'narcos-story',
@@ -677,6 +893,11 @@ const tvShows: TVShow[] = [
     rating: 8.8,
     seasons: 3,
     isFree: false,
+    views: 14567890,
+    likes: 1012345,
+    dislikes: 67890,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-mandalorian-wars',
@@ -689,6 +910,11 @@ const tvShows: TVShow[] = [
     rating: 8.7,
     seasons: 3,
     isFree: false,
+    views: 15678901,
+    likes: 1123456,
+    dislikes: 78901,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-witcher-saga',
@@ -701,6 +927,11 @@ const tvShows: TVShow[] = [
     rating: 8.2,
     seasons: 3,
     isFree: false,
+    views: 16789012,
+    likes: 1234567,
+    dislikes: 89012,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'shadow-and-bone',
@@ -713,6 +944,11 @@ const tvShows: TVShow[] = [
     rating: 7.7,
     seasons: 2,
     isFree: false,
+    views: 17890123,
+    likes: 1345678,
+    dislikes: 90123,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'arcane',
@@ -725,6 +961,11 @@ const tvShows: TVShow[] = [
     rating: 9.0,
     seasons: 1,
     isFree: false,
+    views: 18901234,
+    likes: 1456789,
+    dislikes: 101234,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'the-boys',
@@ -737,6 +978,11 @@ const tvShows: TVShow[] = [
     rating: 8.7,
     seasons: 3,
     isFree: false,
+    views: 19012345,
+    likes: 1567890,
+    dislikes: 112345,
+    reviews: genericReviews,
+    comments: genericComments,
   },
   {
     id: 'severance',
@@ -749,6 +995,11 @@ const tvShows: TVShow[] = [
     rating: 8.7,
     seasons: 1,
     isFree: false,
+    views: 20123456,
+    likes: 1678901,
+    dislikes: 123456,
+    reviews: genericReviews,
+    comments: genericComments,
   }
 ];
 

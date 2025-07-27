@@ -5,6 +5,9 @@ import { Star, Calendar, Tv } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { TVShowRow } from '@/components/tv-show-row';
 import { TVShowDetailClient } from '@/components/tv-show-detail-client';
+import { StatsBar } from '@/components/stats-bar';
+import { ReviewsSection } from '@/components/reviews-section';
+import { CommentsSection } from '@/components/comments-section';
 
 type TVShowDetailPageProps = {
   params: {
@@ -83,12 +86,17 @@ export default async function TVShowDetailPage({ params }: TVShowDetailPageProps
                 <Badge key={genre} variant="secondary">{genre}</Badge>
               ))}
             </div>
-            
+            <StatsBar views={show.views} initialLikes={show.likes} initialDislikes={show.dislikes} />
             <TVShowDetailClient show={show} />
           </div>
         </div>
       </div>
       
+       <div className="container space-y-12 py-10">
+        <ReviewsSection initialReviews={show.reviews} averageRating={show.rating} />
+        <CommentsSection initialComments={show.comments} />
+      </div>
+
       <div className="py-10">
         <TVShowRow title="Related TV Shows" shows={relatedShows} />
       </div>

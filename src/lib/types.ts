@@ -6,6 +6,24 @@ export type MovieQuality = {
   fileSize: string;
 };
 
+export type Review = {
+  id: string;
+  author: string;
+  avatarUrl: string;
+  date: string;
+  rating: number;
+  title: string;
+  text: string;
+};
+
+export type Comment = {
+  id: string;
+  author: string;
+  avatarUrl: string;
+  date: string;
+  text: string;
+};
+
 export type Movie = {
   id: string;
   title: string;
@@ -19,6 +37,11 @@ export type Movie = {
   qualities: MovieQuality[];
   isFree: boolean;
   trailerUrl: string;
+  views: number;
+  likes: number;
+  dislikes: number;
+  reviews: Review[];
+  comments: Comment[];
 };
 
 export type TVShow = {
@@ -32,4 +55,9 @@ export type TVShow = {
   rating: number;
   seasons: number;
   isFree: boolean;
+  views: number;
+  likes: number;
+  dislikes: number;
+  reviews: Review[];
+  comments: Comment[];
 };
