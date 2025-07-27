@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { addDays, format, isSameDay, isAfter, startOfToday } from 'date-fns';
-import { Calendar as CalendarIcon, Plus, Trash2, Edit, X } from 'lucide-react';
+import { Calendar as CalendarIcon, Plus, Trash2, Edit, X, Tag } from 'lucide-react';
 import { Calendar as DayPickerCalendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,20 +13,35 @@ import { useToast } from '@/hooks/use-toast';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from './ui/alert-dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Badge } from './ui/badge';
+
+
+type EventCategory = 'Premiere' | 'Marathon' | 'Special Screening' | 'Q&A';
+
+const eventCategories: EventCategory[] = ['Premiere', 'Marathon', 'Special Screening', 'Q&A'];
+
+const categoryColors: Record<EventCategory, string> = {
+    'Premiere': 'bg-red-500/80',
+    'Marathon': 'bg-blue-500/80',
+    'Special Screening': 'bg-purple-500/80',
+    'Q&A': 'bg-green-500/80',
+};
 
 
 type Event = {
     id: string;
     date: Date;
     title: string;
+    category: EventCategory;
 };
 
 const createInitialEvents = (): Event[] => {
     const today = startOfToday();
     return [
-        { id: 'event-1', date: today, title: 'Cyber Runners Premiere' },
-        { id: 'event-2', date: addDays(today, 4), title: 'Sci-Fi Marathon' },
-        { id: 'event-3', date: addDays(today, 10), title: 'Q&A with Cosmic Odyssey Director' },
+        { id: 'event-1', date: today, title: 'Cyber Runners Premiere', category: 'Premiere' },
+        { id: 'event-2', date: addDays(today, 4), title: 'Sci-Fi Marathon', category: 'Marathon' },
+        { id: 'event-3', date: addDays(today, 10), title: 'Q&A with Cosmic Odyssey Director', category: 'Q&A' },
     ];
 };
 
@@ -36,6 +51,7 @@ export function Calendar() {
     const [events, setEvents] = useState<Event[]>(createInitialEvents);
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [newEventTitle, setNewEventTitle] = useState('');
+    const [newEventCategory, setNewEventCategory] = useState<EventCategory>('Premiere');
     const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
     const handleFormSubmit = (e: React.FormEvent) => {
@@ -52,7 +68,7 @@ export function Calendar() {
         if (editingEvent) {
             // Update existing event
             setEvents(events.map(event => 
-                event.id === editingEvent.id ? { ...event, title: newEventTitle, date: selectedDate } : event
+                event.id === editingEvent.id ? { ...event, title: newEventTitle, date: selectedDate, category: newEventCategory } : event
             ));
             toast({
                 title: 'Event Updated!',
@@ -64,7 +80,8 @@ export function Calendar() {
             const newEvent: Event = {
                 id: crypto.randomUUID(),
                 date: selectedDate,
-                title: newEventTitle
+                title: newEventTitle,
+                category: newEventCategory,
             };
             setEvents([...events, newEvent]);
             toast({
@@ -75,18 +92,21 @@ export function Calendar() {
         
         setNewEventTitle('');
         setSelectedDate(new Date());
+        setNewEventCategory('Premiere');
     };
     
     const handleEditClick = (event: Event) => {
         setEditingEvent(event);
         setNewEventTitle(event.title);
         setSelectedDate(event.date);
+        setNewEventCategory(event.category);
     }
     
     const handleCancelEdit = () => {
         setEditingEvent(null);
         setNewEventTitle('');
         setSelectedDate(new Date());
+        setNewEventCategory('Premiere');
     }
 
     const handleDeleteEvent = (eventId: string) => {
@@ -143,6 +163,17 @@ export function Calendar() {
                                     onChange={(e) => setNewEventTitle(e.target.value)}
                                 />
                             </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="event-category">Category</Label>
+                                <Select value={newEventCategory} onValueChange={(value: EventCategory) => setNewEventCategory(value)}>
+                                    <SelectTrigger id="event-category">
+                                        <SelectValue placeholder="Select a category" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {eventCategories.map(cat => <SelectItem key={cat} value={cat}>{cat}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
+                            </div>
                              <div className="space-y-2">
                                 <Label>Event Date</Label>
                                 <Popover>
@@ -193,7 +224,10 @@ export function Calendar() {
                              <div key={event.id} className={cn("p-3 rounded-md flex justify-between items-center", isSameDay(event.date, today) ? "bg-primary/10" : "bg-muted/50")}>
                                 <div>
                                     <p className="font-semibold">{event.title}</p>
-                                    <p className="text-sm text-muted-foreground">{format(event.date, 'PPP')}</p>
+                                    <div className="flex items-center gap-2">
+                                      <p className="text-sm text-muted-foreground">{format(event.date, 'PPP')}</p>
+                                      <Badge className={cn("text-xs text-white", categoryColors[event.category])}>{event.category}</Badge>
+                                    </div>
                                 </div>
                                 <div className="flex gap-1">
                                     <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleEditClick(event)}>
@@ -227,3 +261,5 @@ export function Calendar() {
         </div>
     )
 }
+
+    
