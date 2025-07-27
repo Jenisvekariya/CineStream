@@ -8,9 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
 import { PlayCircle, Clock } from 'lucide-react';
 import { Separator } from './ui/separator';
-import { Button } from './ui/button';
-import { X } from 'lucide-react';
 import { Skeleton } from './ui/skeleton';
+import { VideoPlayer } from './video-player';
 
 type Episode = {
     id: string;
@@ -62,24 +61,10 @@ export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) 
   if (children) {
      if (playingEpisode) {
       return (
-        <div className="relative w-full h-[50vh] md:h-[70vh] bg-black">
-          <iframe
-            src={`${playingEpisode.videoUrl}?autoplay=1`}
-            title={playingEpisode.title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
-           <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white hover:text-white"
-            onClick={() => setPlayingEpisode(null)}
-            >
-             <X className="h-6 w-6" />
-           </Button>
-        </div>
+        <VideoPlayer
+            videoUrl={playingEpisode.videoUrl}
+            onClose={() => setPlayingEpisode(null)}
+        />
       );
     }
     return <>{children}</>;

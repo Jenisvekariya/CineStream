@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PlayCircle, ArrowDownToLine } from 'lucide-react';
+import { VideoPlayer } from './video-player';
 
 type MovieDetailClientProps = {
   movie: Movie;
@@ -14,9 +16,16 @@ type MovieDetailClientProps = {
 
 export function MovieDetailClient({ movie }: MovieDetailClientProps) {
   const [selectedQuality, setSelectedQuality] = useState<MovieQuality>(movie.qualities[0]);
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
   return (
     <div className="space-y-8">
+      {isPlayerOpen && (
+        <VideoPlayer
+          videoUrl={movie.trailerUrl}
+          onClose={() => setIsPlayerOpen(false)}
+        />
+      )}
       <div>
         <h2 className="text-2xl font-headline font-semibold mb-2">Synopsis</h2>
         <p className="text-muted-foreground whitespace-pre-wrap">{movie.description}</p>
@@ -43,7 +52,7 @@ export function MovieDetailClient({ movie }: MovieDetailClientProps) {
                     Price: <span className="font-bold text-primary">${selectedQuality.price.toFixed(2)}</span>
                   </div>
                   <div className="flex gap-2">
-                     <Button size="lg" className="bg-primary hover:bg-primary/90">
+                     <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={() => setIsPlayerOpen(true)}>
                         <PlayCircle className="mr-2 h-5 w-5" />
                         Stream Now
                       </Button>
