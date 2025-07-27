@@ -6,10 +6,12 @@ import type { TVShow } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
-import { PlayCircle, Clock } from 'lucide-react';
+import { PlayCircle, Clock, Play } from 'lucide-react';
 import { Separator } from './ui/separator';
 import { Skeleton } from './ui/skeleton';
 import { VideoPlayer } from './video-player';
+import { Button } from './ui/button';
+import { StatsBar } from './stats-bar';
 
 type Episode = {
     id: string;
@@ -42,98 +44,126 @@ const generateEpisodeData = (seasonNumber: number): Episode[] => {
     });
 };
 
-type TVShowDetailClientProps = {
-  show: TVShow;
-  children?: React.ReactNode;
+type TVShowDetailContextType = {
+    show: TVShow;
+    playingEpisode: Episode | null;
+    setPlayingEpisode: (episode: Episode | null) => void;
+    seasonsData: Episode[][] | null;
 };
 
-export function TVShowDetailClient({ show, children }: TVShowDetailClientProps) {
-  const [playingEpisode, setPlayingEpisode] = React.useState<Episode | null>(null);
-  const [seasonsData, setSeasonsData] = React.useState<Episode[][] | null>(null);
-  
-  React.useEffect(() => {
-    // Generate data only on the client-side to avoid hydration mismatch
-    const allSeasonsData = Array.from({ length: show.seasons }, (_, i) => generateEpisodeData(i + 1));
-    setSeasonsData(allSeasonsData);
-  }, [show.seasons]);
+const TVShowDetailContext = React.createContext<TVShowDetailContextType | null>(null);
 
-
-  if (children) {
-     if (playingEpisode) {
-      return (
-        <VideoPlayer
-            videoUrl={playingEpisode.videoUrl}
-            onClose={() => setPlayingEpisode(null)}
-        />
-      );
+const useTVShowDetail = () => {
+    const context = React.useContext(TVShowDetailContext);
+    if (!context) {
+        throw new Error('useTVShowDetail must be used within a TVShowDetailProvider');
     }
-    return <>{children}</>;
-  }
+    return context;
+};
 
+export function TVShowDetailClient({ show, children }: { show: TVShow, children: React.ReactNode }) {
+    const [playingEpisode, setPlayingEpisode] = React.useState<Episode | null>(null);
+    const [seasonsData, setSeasonsData] = React.useState<Episode[][] | null>(null);
 
-  return (
-     <div className="space-y-8 pt-4">
-        <div>
-            <h2 className="text-2xl font-headline font-semibold mb-2">Storyline</h2>
-            <p className="text-muted-foreground whitespace-pre-wrap">{show.description}</p>
-        </div>
+    React.useEffect(() => {
+        const allSeasonsData = Array.from({ length: show.seasons }, (_, i) => generateEpisodeData(i + 1));
+        setSeasonsData(allSeasonsData);
+    }, [show.seasons]);
 
-        <Card>
-            <CardHeader>
-                <CardTitle>Seasons & Episodes</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <Tabs defaultValue="season-1" className="w-full">
-                    <TabsList className="overflow-x-auto">
-                        {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => (
-                            <TabsTrigger key={seasonNum} value={`season-${seasonNum}`}>Season {seasonNum}</TabsTrigger>
-                        ))}
-                    </TabsList>
-                     {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => {
-                        const episodes = seasonsData ? seasonsData[seasonNum - 1] : null;
-                        return (
-                        <TabsContent key={seasonNum} value={`season-${seasonNum}`}>
-                           <div className="space-y-4 mt-4">
-                                {!episodes ? (
-                                    Array.from({ length: 5 }).map((_, idx) => (
-                                        <div key={idx} className="flex items-start gap-4 p-2">
-                                            <Skeleton className="w-[160px] h-[90px] rounded-md" />
-                                            <div className="flex-grow space-y-2">
-                                                <Skeleton className="h-5 w-3/4" />
-                                                <Skeleton className="h-4 w-full" />
-                                                <Skeleton className="h-4 w-1/2" />
-                                            </div>
-                                        </div>
-                                    ))
-                                ) : (
-                                    episodes.map((episode, index) => (
-                                        <React.Fragment key={episode.id}>
-                                            <div className="flex items-start gap-4 p-2 rounded-lg hover:bg-muted/50 cursor-pointer" onClick={() => setPlayingEpisode(episode)}>
-                                                <div className="relative flex-shrink-0">
-                                                    <Image src={episode.thumbnail} alt={episode.title} width={160} height={90} className="rounded-md object-cover" data-ai-hint="tv episode"/>
-                                                    <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity">
-                                                        <PlayCircle className="w-8 h-8 text-white"/>
+    if (playingEpisode) {
+        return <VideoPlayer videoUrl={playingEpisode.videoUrl} onClose={() => setPlayingEpisode(null)} />;
+    }
+
+    return (
+        <TVShowDetailContext.Provider value={{ show, playingEpisode, setPlayingEpisode, seasonsData }}>
+            {children}
+        </TVShowDetailContext.Provider>
+    );
+}
+
+export function TVShowContent() {
+    const { show, seasonsData, setPlayingEpisode } = useTVShowDetail();
+
+    const handlePlayFirstEpisode = () => {
+        if (seasonsData && seasonsData.length > 0 && seasonsData[0].length > 0) {
+            setPlayingEpisode(seasonsData[0][0]);
+        }
+    };
+
+    return (
+        <>
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+                <Button size="lg" className="w-full sm:w-auto flex-grow" onClick={handlePlayFirstEpisode}>
+                    <Play className="mr-2 h-6 w-6 fill-current" />
+                    Play First Episode
+                </Button>
+                <div className="w-full sm:w-auto flex-grow">
+                    <StatsBar views={show.views} initialLikes={show.likes} initialDislikes={show.dislikes} />
+                </div>
+            </div>
+            <div className="space-y-8 pt-4">
+                <div>
+                    <h2 className="text-2xl font-headline font-semibold mb-2">Storyline</h2>
+                    <p className="text-muted-foreground whitespace-pre-wrap">{show.description}</p>
+                </div>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Seasons & Episodes</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <Tabs defaultValue="season-1" className="w-full">
+                            <TabsList className="overflow-x-auto">
+                                {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => (
+                                    <TabsTrigger key={seasonNum} value={`season-${seasonNum}`}>Season {seasonNum}</TabsTrigger>
+                                ))}
+                            </TabsList>
+                            {Array.from({ length: show.seasons }, (_, i) => i + 1).map(seasonNum => {
+                                const episodes = seasonsData ? seasonsData[seasonNum - 1] : null;
+                                return (
+                                <TabsContent key={seasonNum} value={`season-${seasonNum}`}>
+                                <div className="space-y-4 mt-4">
+                                        {!episodes ? (
+                                            Array.from({ length: 5 }).map((_, idx) => (
+                                                <div key={idx} className="flex items-start gap-4 p-2">
+                                                    <Skeleton className="w-[160px] h-[90px] rounded-md" />
+                                                    <div className="flex-grow space-y-2">
+                                                        <Skeleton className="h-5 w-3/4" />
+                                                        <Skeleton className="h-4 w-full" />
+                                                        <Skeleton className="h-4 w-1/2" />
                                                     </div>
                                                 </div>
-                                                <div className="flex-grow">
-                                                    <h4 className="font-semibold text-foreground">{episode.title}</h4>
-                                                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{episode.description}</p>
-                                                    <div className="flex items-center text-xs text-muted-foreground mt-2">
-                                                        <Clock className="w-3 h-3 mr-1" />
-                                                        <span>{episode.duration}</span>
+                                            ))
+                                        ) : (
+                                            episodes.map((episode, index) => (
+                                                <React.Fragment key={episode.id}>
+                                                    <div className="flex items-start gap-4 p-2 rounded-lg hover:bg-muted/50 cursor-pointer" onClick={() => setPlayingEpisode(episode)}>
+                                                        <div className="relative flex-shrink-0">
+                                                            <Image src={episode.thumbnail} alt={episode.title} width={160} height={90} className="rounded-md object-cover" data-ai-hint="tv episode"/>
+                                                            <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity">
+                                                                <PlayCircle className="w-8 h-8 text-white"/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex-grow">
+                                                            <h4 className="font-semibold text-foreground">{episode.title}</h4>
+                                                            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{episode.description}</p>
+                                                            <div className="flex items-center text-xs text-muted-foreground mt-2">
+                                                                <Clock className="w-3 h-3 mr-1" />
+                                                                <span>{episode.duration}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            {index < episodes.length - 1 && <Separator />}
-                                        </React.Fragment>
-                                    ))
-                                )}
-                            </div>
-                        </TabsContent>
-                    )})}
-                </Tabs>
-            </CardContent>
-        </Card>
-    </div>
-  )
+                                                    {index < episodes.length - 1 && <Separator />}
+                                                </React.Fragment>
+                                            ))
+                                        )}
+                                    </div>
+                                </TabsContent>
+                            )})}
+                        </Tabs>
+                    </CardContent>
+                </Card>
+            </div>
+        </>
+    )
 }
