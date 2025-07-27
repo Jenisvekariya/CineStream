@@ -47,8 +47,8 @@ export default function ProfilePage() {
                             </div>
                              <div className="space-y-2">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" defaultValue="user@example.com" disabled/>
-                                <p className="text-xs text-muted-foreground">You cannot change your email address here.</p>
+                                <Input id="email" type="email" defaultValue="user@example.com" />
+                                <p className="text-xs text-muted-foreground">This is the email address you use to log in.</p>
                             </div>
 
                              <div className="flex justify-end">

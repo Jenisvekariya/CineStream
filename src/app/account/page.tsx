@@ -51,8 +51,8 @@ export default function AccountPage() {
                                         <p><span className="font-semibold">Password:</span> ********</p>
                                     </div>
                                     <div className="mt-4 flex gap-4">
-                                        <Link href="#" className="text-sm text-primary hover:underline">Change email</Link>
-                                        <Link href="#" className="text-sm text-primary hover:underline">Change password</Link>
+                                        <Link href="/profile" className="text-sm text-primary hover:underline">Change email</Link>
+                                        <Link href="/forgot-password-v1" className="text-sm text-primary hover:underline">Change password</Link>
                                     </div>
                                 </section>
                                 
