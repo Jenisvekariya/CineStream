@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Star, StarHalf } from 'lucide-react';
 import { Progress } from './ui/progress';
 import { Input } from './ui/input';
+import { cn } from '@/lib/utils';
 
 const StarRating = ({ rating, className }: { rating: number; className?: string }) => {
     return (
