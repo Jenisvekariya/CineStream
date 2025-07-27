@@ -127,13 +127,18 @@ export function Header() {
     const commonLinkClass = isMobile ? "w-full justify-start text-base" : "";
     const closeMenu = () => isMobile && setIsMobileMenuOpen(false);
     
+    const checkActive = (href: string) => {
+        if (href === '/') return pathname === href;
+        return pathname.startsWith(href);
+    }
+    
     return (
       <>
-        <Button variant="ghost" className={cn(commonLinkClass, pathname === '/' && 'bg-muted')} asChild><Link href="/">Home</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/movies') && 'bg-muted')} asChild><Link href="/movies-v1">Movies</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/tv-shows') && 'bg-muted')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/subscription') && 'bg-muted')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
-        <Button variant="ghost" className={cn(commonLinkClass, pathname.startsWith('/my-library') && 'bg-muted')} asChild><Link href="/my-library-v1">My Library</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/">Home</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/movies') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/movies-v1">Movies</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/tv-shows') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/tv-shows-v1">TV Shows</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/subscription') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/subscription-v1">Subscription</Link></Button>
+        <Button variant="ghost" className={cn(commonLinkClass, checkActive('/my-library') && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground')} asChild><Link href="/my-library-v1">My Library</Link></Button>
         
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
