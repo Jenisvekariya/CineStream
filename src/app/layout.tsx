@@ -5,6 +5,8 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeCustomizer } from '@/components/theme-customizer';
+import { TopLoader } from '@/components/top-loader';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'CineStream',
@@ -63,6 +65,9 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-foreground antialiased">
         <ThemeProvider>
+          <Suspense>
+            <TopLoader />
+          </Suspense>
           <Header />
           <main>{children}</main>
           <Footer />

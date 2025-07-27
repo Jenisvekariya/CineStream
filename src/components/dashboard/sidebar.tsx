@@ -12,7 +12,7 @@ import {
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "../ui/button"
-import { Paintbrush, CaseUpper, CheckSquare, ToyBrick, Type, CreditCard, Home } from "lucide-react"
+import { Paintbrush, CaseUpper, CheckSquare, ToyBrick, Type, CreditCard, Home, Ellipsis } from "lucide-react"
 
 const menuItems = [
     { href: "/dashboard/typography", label: "Typography", icon: Type },
@@ -20,6 +20,7 @@ const menuItems = [
     { href: "/dashboard/forms", label: "Forms", icon: CheckSquare },
     { href: "/dashboard/cards", label: "Cards", icon: CreditCard },
     { href: "/dashboard/components", label: "Components", icon: ToyBrick },
+    { href: "/dashboard/pagination", label: "Pagination", icon: Ellipsis },
 ]
 
 export function DashboardSidebar() {
