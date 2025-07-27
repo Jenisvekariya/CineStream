@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn } from 'lucide-react';
+import { Film, Search, Menu, X, ChevronDown, User, Tv, Clapperboard, Home, Sparkles, LogIn, KeyRound, Lock, ShieldQuestion, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -16,9 +16,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel
 } from "@/components/ui/dropdown-menu"
-import { getGenres, getMovies } from '@/lib/data';
+import { getMovies } from '@/lib/data';
 import type { Movie } from '@/lib/types';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const pageLinks = {
   home: [
@@ -44,10 +45,8 @@ const pageLinks = {
       { href: '/my-library-v1', title: 'My Library V1' },
       { href: '/my-library-v2', title: 'My Library V2' },
       { href: '/my-library-v3', title: 'My Library V3' },
-  ]
-};
-
-const authLinks = {
+  ],
+  auth: {
     login: [
         { href: '/login-v1', title: 'Login V1' },
         { href: '/login-v2', title: 'Login V2' },
@@ -68,20 +67,33 @@ const authLinks = {
         { href: '/otp-v2', title: 'OTP V2' },
         { href: '/otp-v3', title: 'OTP V3' },
     ]
-}
+  }
+};
 
+const pageCategories = [
+    { title: "Home", icon: Home, links: pageLinks.home },
+    { title: "Movies", icon: Clapperboard, links: pageLinks.movies },
+    { title: "TV Shows", icon: Tv, links: pageLinks.shows },
+    { title: "Subscription", icon: Sparkles, links: pageLinks.subscription },
+    { title: "My Library", icon: Library, links: pageLinks.library },
+]
+
+const authCategories = [
+    { title: "Login", icon: LogIn, links: pageLinks.auth.login },
+    { title: "Sign Up", icon: KeyRound, links: pageLinks.auth.signup },
+    { title: "Forgot Password", icon: Lock, links: pageLinks.auth.forgotPassword },
+    { title: "OTP", icon: ShieldQuestion, links: pageLinks.auth.otp },
+]
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [genres, setGenres] = useState<string[]>([]);
   const [trendingMovie, setTrendingMovie] = useState<Movie | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
-      const [genresData, moviesData] = await Promise.all([getGenres(), getMovies()]);
-      setGenres(genresData);
+      const moviesData = await getMovies();
       const sortedMovies = [...moviesData].sort((a,b) => b.rating - a.rating);
       setTrendingMovie(sortedMovies[0]);
     }
@@ -114,73 +126,65 @@ export function Header() {
                     Pages <ChevronDown className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-[700px] h-[450px] p-0">
-                <div className="flex h-full">
-                    <div className="w-1/3 relative rounded-l-md overflow-hidden">
+            <DropdownMenuContent className="w-screen max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-5rem)] lg:max-w-[1200px] p-0" align="start">
+                <div className="flex">
+                    <div className="w-1/3 relative rounded-l-md overflow-hidden hidden lg:block">
                         {trendingMovie && (
                             <>
                                 <Image src={trendingMovie.poster} alt={trendingMovie.title} fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"/>
-                                <div className="absolute bottom-0 left-0 p-4 text-white">
-                                    <h3 className="font-bold text-lg font-headline">{trendingMovie.title}</h3>
-                                    <p className="text-xs text-muted-foreground line-clamp-2">{trendingMovie.description}</p>
+                                <div className="absolute bottom-0 left-0 p-6 text-white">
+                                    <h3 className="font-bold text-xl font-headline">{trendingMovie.title}</h3>
+                                    <p className="text-sm text-muted-foreground line-clamp-2 mt-1">{trendingMovie.description}</p>
+                                    <Button variant="secondary" size="sm" className="mt-4">Watch Now</Button>
                                 </div>
                             </>
                         )}
                     </div>
-                    <div className="w-2/3 p-4 flex justify-around">
-                         <div className="flex flex-col gap-4">
-                            <h4 className="font-headline font-semibold mb-2">Home</h4>
-                            <ul className="text-sm space-y-1">
-                                {pageLinks.home.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                            </ul>
-                            <h4 className="font-headline font-semibold mb-2 mt-4">Subscription</h4>
-                            <ul className="text-sm space-y-1">
-                                {pageLinks.subscription.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                            </ul>
+                    <div className="w-full lg:w-2/3 p-6 grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div className="space-y-6">
+                           {pageCategories.slice(0, 3).map(category => (
+                                <div key={category.title}>
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <category.icon className="w-5 h-5 text-primary"/>
+                                        <h4 className="font-headline font-semibold">{category.title}</h4>
+                                    </div>
+                                    <ul className="text-sm space-y-1.5">
+                                        {category.links.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                                    </ul>
+                                </div>
+                           ))}
                         </div>
-                         <div className="flex flex-col gap-4">
-                            <h4 className="font-headline font-semibold mb-2">TV Shows</h4>
-                            <ul className="text-sm space-y-1">
-                                 {pageLinks.shows.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                            </ul>
-                            <h4 className="font-headline font-semibold mb-2 mt-4">My Library</h4>
-                             <ul className="text-sm space-y-1">
-                                 {pageLinks.library.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                            </ul>
+                         <div className="space-y-6">
+                            {pageCategories.slice(3).map(category => (
+                                <div key={category.title}>
+                                     <div className="flex items-center gap-2 mb-2">
+                                        <category.icon className="w-5 h-5 text-primary"/>
+                                        <h4 className="font-headline font-semibold">{category.title}</h4>
+                                    </div>
+                                    <ul className="text-sm space-y-1.5">
+                                        {category.links.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                                    </ul>
+                                </div>
+                           ))}
                         </div>
-                        <div className="flex flex-col gap-4">
-                           <h4 className="font-headline font-semibold mb-2">Auth Pages</h4>
-                            <ul className="text-sm space-y-1">
-                                {authLinks.login.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                                <li className="pt-2"><DropdownMenuSeparator /></li>
-                                {authLinks.signup.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary">{link.title}</Link></li>)}
-                            </ul>
+                        <div className="space-y-6">
+                             <div className="flex items-center gap-2 mb-2">
+                                <Lock className="w-5 h-5 text-primary"/>
+                                <h4 className="font-headline font-semibold">Authentication</h4>
+                            </div>
+                            {authCategories.map(category => (
+                                <div key={category.title}>
+                                    <h5 className="font-semibold text-sm text-foreground/80 mb-1.5">{category.title}</h5>
+                                    <ul className="text-sm space-y-1.5">
+                                        {category.links.map(link => <li key={link.href}><Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">{link.title}</Link></li>)}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </DropdownMenuContent>
-        </DropdownMenu>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className={`${commonLinkClass} flex items-center gap-1`}>
-              Auth Pages <ChevronDown className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Login</DropdownMenuLabel>
-            {authLinks.login.map(link => <DropdownMenuItem key={link.href} asChild><Link href={link.href} onClick={closeMenu}>{link.title}</Link></DropdownMenuItem>)}
-            <DropdownMenuSeparator />
-            <DropdownMenuLabel>Sign Up</DropdownMenuLabel>
-            {authLinks.signup.map(link => <DropdownMenuItem key={link.href} asChild><Link href={link.href} onClick={closeMenu}>{link.title}</Link></DropdownMenuItem>)}
-            <DropdownMenuSeparator />
-            <DropdownMenuLabel>Forgot Password</DropdownMenuLabel>
-            {authLinks.forgotPassword.map(link => <DropdownMenuItem key={link.href} asChild><Link href={link.href} onClick={closeMenu}>{link.title}</Link></DropdownMenuItem>)}
-            <DropdownMenuSeparator />
-            <DropdownMenuLabel>OTP</DropdownMenuLabel>
-            {authLinks.otp.map(link => <DropdownMenuItem key={link.href} asChild><Link href={link.href} onClick={closeMenu}>{link.title}</Link></DropdownMenuItem>)}
-          </DropdownMenuContent>
         </DropdownMenu>
       </>
     );
@@ -240,7 +244,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
                 <SheetHeader className="p-4 border-b">
-                  <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                   <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                    <div className="flex items-center justify-between">
                       <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                         <Film className="h-7 w-7 text-primary" />
@@ -264,7 +268,3 @@ export function Header() {
     </header>
   );
 }
-
-    
-
-    
