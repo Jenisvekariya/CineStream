@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Terminal, Waves } from 'lucide-react';
+import { Terminal, Waves, HelpCircle } from 'lucide-react';
 import { CodeBlock } from '@/components/code-block';
 
 
@@ -17,7 +17,7 @@ export default function DashboardComponentsPage() {
                 A collection of other UI components used in the application.
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <Card>
                     <CardHeader>
                         <CardTitle>Alerts</CardTitle>
@@ -31,7 +31,7 @@ export default function DashboardComponentsPage() {
                             </AlertDescription>
                         </Alert>
                          <Alert variant="destructive">
-                            <Waves className="h-4 w-4" />
+                            <HelpCircle className="h-4 w-4" />
                             <AlertTitle>Error</AlertTitle>
                             <AlertDescription>
                                 Your session has expired. Please log in again.
@@ -42,7 +42,15 @@ export default function DashboardComponentsPage() {
     <Terminal className="h-4 w-4" />
     <AlertTitle>Heads up!</AlertTitle>
     <AlertDescription>
-        You can add components to your app using the cli.
+        You can add components to your app.
+    </AlertDescription>
+</Alert>
+
+<Alert variant="destructive">
+    <HelpCircle className="h-4 w-4" />
+    <AlertTitle>Error</AlertTitle>
+    <AlertDescription>
+        Your session has expired.
     </AlertDescription>
 </Alert>`}
                         </CodeBlock>
@@ -83,21 +91,25 @@ export default function DashboardComponentsPage() {
                         <CardTitle>Accordion</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <Accordion type="single" collapsible>
+                        <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="item-1">
                                 <AccordionTrigger>Is it accessible?</AccordionTrigger>
                                 <AccordionContent>
                                 Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
+                             <AccordionItem value="item-2">
+                                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                                <AccordionContent>
+                                Yes. It comes with default styles that match the rest of the components.
+                                </AccordionContent>
+                            </AccordionItem>
                         </Accordion>
                         <CodeBlock>
 {`<Accordion type="single" collapsible>
     <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-        Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
+        <AccordionTrigger>Question 1</AccordionTrigger>
+        <AccordionContent>Answer 1</AccordionContent>
     </AccordionItem>
 </Accordion>`}
                         </CodeBlock>
@@ -108,15 +120,15 @@ export default function DashboardComponentsPage() {
                         <CardTitle>Tabs</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                       <Tabs defaultValue="account">
-                            <TabsList>
+                       <Tabs defaultValue="account" className="w-full">
+                            <TabsList className="grid w-full grid-cols-2">
                                 <TabsTrigger value="account">Account</TabsTrigger>
                                 <TabsTrigger value="password">Password</TabsTrigger>
                             </TabsList>
-                            <TabsContent value="account" className="p-4 border-t mt-2">
+                            <TabsContent value="account" className="p-4 border rounded-b-md border-t-0">
                                 Make changes to your account here.
                             </TabsContent>
-                            <TabsContent value="password" className="p-4 border-t mt-2">
+                            <TabsContent value="password" className="p-4 border rounded-b-md border-t-0">
                                 Change your password here.
                             </TabsContent>
                         </Tabs>
@@ -137,10 +149,10 @@ export default function DashboardComponentsPage() {
                         <CardTitle>Separator</CardTitle>
                     </CardHeader>
                     <CardContent className="text-center space-y-4">
-                        <div>
-                            <p>Content above</p>
+                        <div className="text-sm">
+                            <p className="text-muted-foreground">The New York Times</p>
                             <Separator className="my-4"/>
-                            <p>Content below</p>
+                            <p className="font-medium text-foreground">Style Section</p>
                         </div>
                         <CodeBlock>
                             {`<Separator />`}
