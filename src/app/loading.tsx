@@ -8,9 +8,10 @@ export default function Loading() {
   const [isHiding, setIsHiding] = useState(false);
 
   useEffect(() => {
+    // This timer ensures the loader is visible for a minimum duration, preventing flashes on fast loads.
     const timer = setTimeout(() => {
       setIsHiding(true);
-    }, 2000); // Enforce a 2-second minimum display time
+    }, 1500); // Enforce a 1.5-second minimum display time for the animation to be perceived.
 
     return () => clearTimeout(timer);
   }, []);
