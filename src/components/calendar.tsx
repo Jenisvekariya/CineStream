@@ -21,15 +21,13 @@ type Event = {
     title: string;
 };
 
-const initialEvents: Event[] = [
-    { id: crypto.randomUUID(), date: new Date(), title: 'Cyber Runners Premiere' },
-    { id: crypto.randomUUID(), date: addDays(new Date(), 4), title: 'Sci-Fi Marathon' },
-    { id: crypto.randomUUID(), date: addDays(new Date(), 10), title: 'Q&A with Cosmic Odyssey Director' },
-];
-
 export function Calendar() {
     const { toast } = useToast();
-    const [events, setEvents] = useState<Event[]>(initialEvents);
+    const [events, setEvents] = useState<Event[]>(() => [
+        { id: crypto.randomUUID(), date: new Date(), title: 'Cyber Runners Premiere' },
+        { id: crypto.randomUUID(), date: addDays(new Date(), 4), title: 'Sci-Fi Marathon' },
+        { id: crypto.randomUUID(), date: addDays(new Date(), 10), title: 'Q&A with Cosmic Odyssey Director' },
+    ]);
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [newEventTitle, setNewEventTitle] = useState('');
     const [editingEvent, setEditingEvent] = useState<Event | null>(null);
