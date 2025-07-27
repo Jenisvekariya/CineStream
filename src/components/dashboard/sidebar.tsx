@@ -33,7 +33,7 @@ export function DashboardSidebar() {
             <h2 className="font-headline text-2xl font-bold text-white group-data-[collapsible=icon]:hidden">Dashboard</h2>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="mt-4">
         <SidebarMenu>
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.href}>
