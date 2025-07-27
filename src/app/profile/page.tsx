@@ -51,9 +51,7 @@ export default function ProfilePage() {
                                 <p className="text-xs text-muted-foreground">This is the email address you use to log in.</p>
                             </div>
 
-                             <div className="flex justify-end">
-                                <Button type="submit">Save Changes</Button>
-                            </div>
+                             <Button type="submit" className="w-full">Save Changes</Button>
                         </form>
                     </CardContent>
                 </Card>

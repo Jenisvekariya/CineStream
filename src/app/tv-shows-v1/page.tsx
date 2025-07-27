@@ -22,6 +22,7 @@ function TVShowsPageContent() {
   const [searchTerm, setSearchTerm] = useState(searchParams.get('q') || '');
   const [selectedGenre, setSelectedGenre] = useState(searchParams.get('genre') || 'all');
   const [selectedStatus, setSelectedStatus] = useState('all');
+  const [selectedPrice, setSelectedPrice] = useState('all');
   const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1);
 
   useEffect(() => {
@@ -47,9 +48,10 @@ function TVShowsPageContent() {
       const matchesStatus = selectedStatus === 'all' 
         || (selectedStatus === 'ongoing' && show.endYear === null) 
         || (selectedStatus === 'ended' && show.endYear !== null);
-      return matchesSearch && matchesGenre && matchesStatus;
+      const matchesPrice = selectedPrice === 'all' || (selectedPrice === 'free' && show.isFree) || (selectedPrice === 'paid' && !show.isFree);
+      return matchesSearch && matchesGenre && matchesStatus && matchesPrice;
     });
-  }, [tvShows, searchTerm, selectedGenre, selectedStatus]);
+  }, [tvShows, searchTerm, selectedGenre, selectedStatus, selectedPrice]);
 
   const totalPages = Math.ceil(filteredShows.length / ITEMS_PER_PAGE);
   const paginatedShows = filteredShows.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
@@ -99,12 +101,12 @@ function TVShowsPageContent() {
         <p className="text-muted-foreground">Find your next series to binge watch.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 sticky top-16 bg-background/95 py-4 z-40 backdrop-blur">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 sticky top-16 bg-background/95 py-4 z-40 backdrop-blur">
         <Input
           placeholder="Search by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="md:col-span-3"
+          className="md:col-span-4"
         />
         <Select value={selectedGenre} onValueChange={setSelectedGenre}>
           <SelectTrigger><SelectValue placeholder="All Genres" /></SelectTrigger>
@@ -119,6 +121,14 @@ function TVShowsPageContent() {
             <SelectItem value="all">All Statuses</SelectItem>
             <SelectItem value="ongoing">Ongoing</SelectItem>
             <SelectItem value="ended">Ended</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select value={selectedPrice} onValueChange={setSelectedPrice}>
+          <SelectTrigger><SelectValue placeholder="All Prices" /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Prices</SelectItem>
+            <SelectItem value="free">Free</SelectItem>
+            <SelectItem value="paid">Paid</SelectItem>
           </SelectContent>
         </Select>
       </div>
