@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Crown } from 'lucide-react';
+import { CodeBlock } from '@/components/code-block';
 
 export default function DashboardCardsPage() {
   return (
@@ -54,7 +55,20 @@ export default function DashboardCardsPage() {
             </CardContent>
         </Card>
       </div>
-
+        <CodeBlock>
+            {`<Card>
+    <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+    </CardHeader>
+    <CardContent>
+        <p>Card Content</p>
+    </CardContent>
+    <CardFooter>
+        <p>Card Footer</p>
+    </CardFooter>
+</Card>`}
+        </CodeBlock>
     </div>
   );
 }

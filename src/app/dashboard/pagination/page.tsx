@@ -1,5 +1,6 @@
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CodeBlock } from '@/components/code-block';
 
 export default function DashboardPaginationPage() {
     return (
@@ -13,7 +14,7 @@ export default function DashboardPaginationPage() {
                 <CardHeader>
                     <CardTitle>Default Pagination</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-4">
                     <Pagination>
                         <PaginationContent>
                             <PaginationItem>
@@ -36,6 +37,30 @@ export default function DashboardPaginationPage() {
                             </PaginationItem>
                         </PaginationContent>
                     </Pagination>
+                    <CodeBlock>
+{`<Pagination>
+    <PaginationContent>
+        <PaginationItem>
+            <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationLink href="#" isActive>2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+            <PaginationNext href="#" />
+        </PaginationItem>
+    </PaginationContent>
+</Pagination>`}
+                    </CodeBlock>
                 </CardContent>
             </Card>
         </div>

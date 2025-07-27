@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CodeBlock } from '@/components/code-block';
 
 export default function DashboardTypographyPage() {
   return (
@@ -25,6 +26,12 @@ export default function DashboardTypographyPage() {
           <h4 className="text-2xl font-headline font-semibold tracking-tight">
             h4. The quick brown fox jumps over the lazy dog.
           </h4>
+          <CodeBlock>
+{`<h1>h1. The quick brown fox...</h1>
+<h2>h2. The quick brown fox...</h2>
+<h3>h3. The quick brown fox...</h3>
+<h4>h4. The quick brown fox...</h4>`}
+          </CodeBlock>
         </CardContent>
       </Card>
 
@@ -42,6 +49,11 @@ export default function DashboardTypographyPage() {
              <p className="text-sm font-medium">
                 This is small, medium-weight text, often used for labels or metadata.
             </p>
+            <CodeBlock>
+{`<p>Standard paragraph text.</p>
+<p className="text-muted-foreground">Muted text.</p>
+<p className="text-sm font-medium">Small, medium-weight text.</p>`}
+            </CodeBlock>
         </CardContent>
       </Card>
 
@@ -52,6 +64,10 @@ export default function DashboardTypographyPage() {
         <CardContent className="space-y-4">
             <p>You can use <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">inline code</code> snippets.</p>
             <p>This is a <a href="#" className="font-medium text-primary underline underline-offset-4">link</a>.</p>
+            <CodeBlock>
+{`<code>inline code</code>
+<a href="#">link</a>`}
+            </CodeBlock>
         </CardContent>
       </Card>
     </div>
