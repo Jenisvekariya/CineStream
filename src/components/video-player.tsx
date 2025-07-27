@@ -32,6 +32,7 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
         'fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-in fade-in-0',
         hiding && 'animate-out fade-out-0'
       )}
+      onClick={handleClose}
     >
       <Button
         variant="ghost"
@@ -44,7 +45,7 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
       </Button>
 
       {loading ? (
-        <div className="flex flex-col items-center justify-center gap-4 text-white">
+        <div className="flex flex-col items-center justify-center gap-4 text-white" onClick={(e) => e.stopPropagation()}>
           <div className="relative h-16 w-16">
             <Film className="h-16 w-16 text-primary animate-pulse" />
             <div className="absolute inset-0 rounded-full border-4 border-primary/50 animate-ping" />
@@ -53,7 +54,7 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
           <p className="text-muted-foreground">Loading player...</p>
         </div>
       ) : (
-        <div className="w-full h-full max-w-4xl max-h-[80vh] aspect-video animate-in zoom-in-75">
+        <div className="w-full h-full max-w-4xl max-h-[80vh] aspect-video animate-in zoom-in-75" onClick={(e) => e.stopPropagation()}>
             <iframe
                 src={`${videoUrl}?autoplay=1`}
                 title="Video Player"
