@@ -25,7 +25,7 @@ const iconList: {name: keyof typeof icons, component: LucideIcon}[] = [
     { name: 'Film', component: icons.Film },
     { name: 'Tv', component: icons.Tv },
     { name: 'Clapperboard', component: icons.Clapperboard },
-    { name: 'Library', component: icons.Library },
+    { name: 'LibrarySquare', component: icons.LibrarySquare },
     { name: 'Home', component: icons.Home },
     { name: 'LogIn', component: icons.LogIn },
     { name: 'LogOut', component: icons.LogOut },
