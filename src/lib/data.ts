@@ -130,7 +130,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'path-of-the-samurai',
     title: 'Path of the Samurai',
-    poster: 'https://images.unsplash.com/photo-1697289161683-2f7636d300e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxBY3Rpb24lMjBEcmFtYSUyMG1vdmllfGVufDB8fHx8MTc1MjUxMjIxNXww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/flagged/photo-1561476589-e1f20238b297?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhY3Rpb24lMjBkcmFtYXxlbnwwfHx8fDE3NTM2MjU2NzF8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2021,
     genres: ['Action', 'Drama'],
     language: 'Japanese',
@@ -153,7 +153,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'love-in-paris',
     title: 'Love in Paris',
-    poster: 'https://images.unsplash.com/photo-1588857721040-78ec6be0f9aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyb21hbmNlJTIwY29tZWR5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1696527014251-d4774d53fbba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyb21hbmNlJTIwY29tZWR5fGVufDB8fHx8MTc1MzYyNTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Romance', 'Comedy'],
     language: 'French',
@@ -176,7 +176,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'the-heist-of-the-century',
     title: 'The Heist of the Century',
-    poster: 'https://images.unsplash.com/photo-1613485930018-9718f9oht-b524d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjcmltZSUyMHRocmlsbGVyfGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1633266841047-719b5f737149?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjcmltZSUyMHRocmlsbGVyfGVufDB8fHx8MTc1MzYyNTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Crime', 'Thriller'],
     language: 'English',
@@ -199,7 +199,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'galaxy-guardians',
     title: 'Galaxy Guardians',
-    poster: 'https://images.unsplash.com/photo-1579972668140-f7da53ccc2a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzY2ktZmklMjBhY3Rpb24lMjBjb21lZHl8ZW58MHx8fHwxNzUyNDg1NzE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1653850406483-3e357cbc2dbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzY2ktZmklMjBhY3Rpb24lMjBjb21lZHl8ZW58MHx8fHwxNzUzNjI1NjcxfDA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Sci-Fi', 'Action', 'Comedy'],
     language: 'English',
@@ -222,7 +222,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'whimsical-woods',
     title: 'Whimsical Woods',
-    poster: 'https://images.unsplash.com/photo-1622170416334-177b749d7591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhbmltYXRpb24lMjBmYW1pbHklMjBmYW50YXN5fGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1631677640752-64be5f1ce70f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbmltYXRpb24lMjBmYW1pbHklMjBmYW50YXN5fGVufDB8fHx8MTc1MzYyNTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Animation', 'Family', 'Fantasy'],
     language: 'English',
@@ -245,7 +245,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'zero-day',
     title: 'Zero Day',
-    poster: 'https://images.unsplash.com/photo-1731575115709-d4325615e868?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0aHJpbGxlciUyMGFjdGlvbnxlbnwwfHx8fDE3NTI0ODU3MTd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1602518872490-2887dfdb5535?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0aHJpbGxlciUyMGFjdGlvbnxlbnwwfHx8fDE3NTM2MjU2NzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2024,
     genres: ['Thriller', 'Action'],
     language: 'English',
@@ -268,7 +268,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'a-simple-melody',
     title: 'A Simple Melody',
-    poster: 'https://images.unsplash.com/photo-1654752527399-7541131b3e5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkcmFtYSUyMG11c2ljfGVufDB8fHx8MTc1MjQ4NTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1648461513577-8521ecdf50c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkcmFtYSUyMG11c2ljfGVufDB8fHx8MTc1MzYyNTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2022,
     genres: ['Drama', 'Music'],
     language: 'English',
@@ -291,7 +291,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'chronicles-of-narnia',
     title: 'The Chronicles of Narnia',
-    poster: 'https://images.unsplash.com/photo-1586041113888-910443a593d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmYW50YXN5JTIwYWR2ZW50dXJlJTIwbW92aWV8ZW58MHx8fHwxNzUyNDg1NzE4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1679765811614-a6780191d51e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYW50YXN5JTIwYWR2ZW50dXJlJTIwZmFtaWx5fGVufDB8fHx8MTc1MzYyNTY3MXww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2005,
     genres: ['Fantasy', 'Adventure', 'Family'],
     language: 'English',
@@ -313,7 +313,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'interstellar-echo',
     title: 'Interstellar Echo',
-    poster: 'https://images.unsplash.com/photo-1585854387184-53385ea2d8df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxTY2ktRmklMjBUaHJpbGxlciUyMG1vdmllfGVufDB8fHx8MTc1MjUxMjIxNXww&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1698956483970-a47edef29331?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzY2ktZmklMjB0aHJpbGxlcnxlbnwwfHx8fDE3NTM2MjU2NzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2025,
     genres: ['Sci-Fi', 'Thriller'],
     language: 'English',
@@ -335,7 +335,7 @@ const movies: Omit<Movie, 'type'>[] = [
   {
     id: 'the-last-heir',
     title: 'The Last Heir',
-    poster: 'https://images.unsplash.com/photo-1700300325756-20ec2d287dd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxGYW50YXN5JTIwQWN0aW9uJTIwQWR2ZW50dXJlJTIwbW92aWV8ZW58MHx8fHwxNzUyNTEyMjE1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    poster: 'https://images.unsplash.com/photo-1677295922463-147d7f2f718c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYWN0aW9uJTIwYWR2ZW50dXJlfGVufDB8fHx8MTc1MzYyNTY3MHww&ixlib=rb-4.1.0&q=80&w=1080',
     year: 2023,
     genres: ['Fantasy', 'Action', 'Adventure'],
     language: 'English',
