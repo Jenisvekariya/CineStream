@@ -17,15 +17,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Badge } from './ui/badge';
 
 
-type EventCategory = 'Premiere' | 'Marathon' | 'Special Screening' | 'Q&A';
+type EventCategory = 'Free Movies' | 'Discount on Pricing' | 'Free TV Shows' | 'Limited Time Access';
 
-const eventCategories: EventCategory[] = ['Premiere', 'Marathon', 'Special Screening', 'Q&A'];
+const eventCategories: EventCategory[] = ['Free Movies', 'Discount on Pricing', 'Free TV Shows', 'Limited Time Access'];
 
 const categoryColors: Record<EventCategory, string> = {
-    'Premiere': 'bg-red-500/80',
-    'Marathon': 'bg-blue-500/80',
-    'Special Screening': 'bg-purple-500/80',
-    'Q&A': 'bg-green-500/80',
+    'Free Movies': 'bg-green-500/80',
+    'Discount on Pricing': 'bg-blue-500/80',
+    'Free TV Shows': 'bg-purple-500/80',
+    'Limited Time Access': 'bg-red-500/80',
 };
 
 
@@ -39,9 +39,9 @@ type Event = {
 const createInitialEvents = (): Event[] => {
     const today = startOfToday();
     return [
-        { id: 'event-1', date: today, title: 'Cyber Runners Premiere', category: 'Premiere' },
-        { id: 'event-2', date: addDays(today, 4), title: 'Sci-Fi Marathon', category: 'Marathon' },
-        { id: 'event-3', date: addDays(today, 10), title: 'Q&A with Cosmic Odyssey Director', category: 'Q&A' },
+        { id: 'event-1', date: today, title: 'Free Weekend: All Action Movies', category: 'Free Movies' },
+        { id: 'event-2', date: addDays(today, 4), title: '50% Off Premium Plan', category: 'Discount on Pricing' },
+        { id: 'event-3', date: addDays(today, 10), title: 'Binge Watch "Silicon Valley Tales" for Free', category: 'Free TV Shows' },
     ];
 };
 
@@ -51,7 +51,7 @@ export function Calendar() {
     const [events, setEvents] = useState<Event[]>(createInitialEvents);
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [newEventTitle, setNewEventTitle] = useState('');
-    const [newEventCategory, setNewEventCategory] = useState<EventCategory>('Premiere');
+    const [newEventCategory, setNewEventCategory] = useState<EventCategory>('Free Movies');
     const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
     const handleFormSubmit = (e: React.FormEvent) => {
@@ -92,7 +92,7 @@ export function Calendar() {
         
         setNewEventTitle('');
         setSelectedDate(new Date());
-        setNewEventCategory('Premiere');
+        setNewEventCategory('Free Movies');
     };
     
     const handleEditClick = (event: Event) => {
@@ -106,7 +106,7 @@ export function Calendar() {
         setEditingEvent(null);
         setNewEventTitle('');
         setSelectedDate(new Date());
-        setNewEventCategory('Premiere');
+        setNewEventCategory('Free Movies');
     }
 
     const handleDeleteEvent = (eventId: string) => {
