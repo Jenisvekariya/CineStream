@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -263,7 +264,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Film className="h-7 w-7 text-primary" />
-            <span className="font-headline text-2xl font-bold text-white">CineStream</span>
+            <span className="font-headline text-2xl font-bold text-foreground">CineStream</span>
           </Link>
           <nav className="hidden lg:flex items-center gap-1">
             <NavItems />
@@ -335,7 +336,7 @@ export function Header() {
                    <div className="flex items-center justify-between">
                       <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                         <Film className="h-7 w-7 text-primary" />
-                        <span className="font-headline text-2xl font-bold text-white">CineStream</span>
+                        <span className="font-headline text-2xl font-bold text-foreground">CineStream</span>
                       </Link>
                       <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                         <X className="h-6 w-6" />

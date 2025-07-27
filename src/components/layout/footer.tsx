@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col items-start gap-4">
             <Link href="/" className="flex items-center gap-2">
               <Film className="h-7 w-7 text-primary" />
-              <span className="font-headline text-2xl font-bold text-white">CineStream</span>
+              <span className="font-headline text-2xl font-bold text-foreground">CineStream</span>
             </Link>
             <p className="text-muted-foreground text-sm">
               Your ultimate destination for movies. Stream, buy, and enjoy the best of cinema.
