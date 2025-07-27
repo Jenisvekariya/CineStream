@@ -1,7 +1,7 @@
 import type { Movie } from '@/lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star } from 'lucide-react';
+import { Star, PlayCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 
 type TopRatedListProps = {
@@ -46,6 +46,3 @@ export function TopRatedList({ movies }: TopRatedListProps) {
     </section>
   );
 }
-
-// Need to add this to avoid an error.
-import { PlayCircle } from 'lucide-react';
